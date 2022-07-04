@@ -1,38 +1,25 @@
-package com.my.project;
+package com.my.project.controller;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.my.project.dto.Calendar;
 import com.my.project.service.CalendarService;
-import com.mysql.cj.xdevapi.JsonArray;
-import com.mysql.cj.xdevapi.JsonValue;
-
-import jdk.nashorn.api.scripting.JSObject;
 
 
 @Controller
@@ -64,7 +51,7 @@ public class CalendarController {
 			hashmap.put("title", cal.getTitle());
 			hashmap.put("start", cal.getStart());
 			hashmap.put("end", cal.getEnd());
-			hashmap.put("allDay", true);
+			hashmap.put("allDay", false);
 			
 	        jsonObj = new JSONObject(hashmap);
 	        jsonArr.add(jsonObj);
@@ -90,17 +77,15 @@ public class CalendarController {
 
 	}
 	
-	  @ResponseBody 
-	  @RequestMapping("remove")
-	  public String caldelete(@RequestBody Calendar calendar, @RequestParam int num) throws Exception {
+	  //@ResponseBody 
+	  @DeleteMapping("/{title}")
+	  public String caldelete(@PathVariable String title) throws Exception {
 		  
-		  System.out.println(num);
-		  calendarService.calDelete(num);
+			  System.out.println(title);
+			  calendarService.calDelete(title);
+	
 		  
-		  
-		  
-	  
-	  return "??";
+		  return "delete!";
 	  
 	  }
 	 

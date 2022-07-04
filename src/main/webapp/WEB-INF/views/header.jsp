@@ -15,22 +15,23 @@
 			<a href="${path}/login" id="aLogin">로그인</a>
 			<a href="" id="aLogout">로그아웃</a>
 			<a href="${path}/member/join"  id ="aJoin">회원가입</a> --%>
-			<a href="${path}">로그인</a>
+			<input type="hidden" value="${path}/" id="contextpath"> 
+			<a href="${path}/login">로그인</a>
 			<a href="${path}">로그아웃</a>
-			<a href="${path}">회원가입</a>
+			<a href="${path}/member/join">회원가입</a>
 		</div>
 		<div id="logo">
-			<a href="${path}/home" >
+			<a href="${path}/" >
 				<img src="${path}/resources/images/logo.jpg" width="300" title="회사 로고" style="display: block; margin: 0px auto;" >
 			</a>
 		</div>
 	</header>
 	<hr>
 	<nav style="word-spacing: 5px">
-                    <a href="${path}/home"  class="menu-item">HOME</a>
-                    <a href="${path}"  class="menu-item">COMMUNITY</a>
+                    <a href="${path}/"  class="menu-item">HOME</a>
+                    <a href="${path}/board/list"  class="menu-item">COMMUNITY</a>
                     <a href="${path}/calendar"  class="menu-item">근태관리</a>
-                    <a href="${path}"  class="menu-item">나의정보</a>            	
+                    <a href="${path}/memberdetail"  class="menu-item">나의정보</a>            	
 	</nav>
 	<hr>
 </body>

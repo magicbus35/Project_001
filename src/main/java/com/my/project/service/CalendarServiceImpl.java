@@ -1,8 +1,6 @@
 package com.my.project.service;
 
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +32,9 @@ public class CalendarServiceImpl implements CalendarService {
 
 
 	@Override
-	public int calDelete(int num) {
+	public int calDelete(String title) {
 		// TODO Auto-generated method stub
-		return calendarRepository.calDelete(num);
+		return calendarRepository.calDelete(title);
 	}
 
 }

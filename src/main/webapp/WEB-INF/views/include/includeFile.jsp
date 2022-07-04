@@ -18,9 +18,11 @@
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 
+<!-- 아이콘 -->
+<script src="https://kit.fontawesome.com/f0882b9d64.js" crossorigin="anonymous"></script>
 
-
-
+<!-- css -->
+<link rel="stylesheet" href="${path}/resources/css/style.css">
   
 <!-- css --> 
 <%-- <link rel = "stylesheet" href="${path}/resources/css/style.css"> --%>

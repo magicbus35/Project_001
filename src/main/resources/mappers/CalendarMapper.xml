@@ -5,8 +5,8 @@
   
 <mapper namespace="com.my.project.CalendarMapper">
 	<insert id="insert" parameterType="Calendar" useGeneratedKeys="true" keyProperty="num">
-		insert into calendar(num, title, start, end, allday) 
-		values(null, #{title}, #{start}, #{end}, #{allday})
+		insert into calendar(title, start, end, allday) 
+		values(#{title}, #{start}, #{end}, #{allday})
 	</insert>
 	
 	<select id="selectList" resultType="Calendar">
@@ -14,7 +14,6 @@
 	</select>
 	<delete id="delete">
 		delete from calendar
-		where num = #{num}
+		where title = #{title}
 	</delete>
-
 </mapper>

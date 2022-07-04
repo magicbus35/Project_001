@@ -215,10 +215,10 @@
   border: none !important;
 }
 
-.fc-day-grid-event .fc-time {
+ .fc-day-grid-event .fc-time {
   font-weight: 700;
   text-transform: uppercase;
-}
+} 
 
 .fc-unthemed .fc-day-grid td:not(.fc-axis).fc-event-container {
   /* padding: 0.2rem 0.5rem; */
@@ -327,16 +327,6 @@ select.filter {
   margin: 0 auto;    
   }
   
-  
-  .backgroundImg {
-   		width: 100%;
-        height: 100%;
-        text-align: center;
-        background: url("../resources/images/javabin.jpg");
-  }
-	
-  
-  
 
 
 </style>	
@@ -348,9 +338,9 @@ select.filter {
   
    	<%@ include file="header.jsp" %>
  
-  <h1 style="margin: auto; display: block;">JAVAVIN 직원 근태,일정 관리</h1><br>	
+  <h1 style="margin: auto; display: block;">JAVABEAN 직원 근태,일정 관리</h1><br>	
 
-  드래그 : 일정등록<br>1
+  드래그 : 일정등록<br>
   클릭 : 일정삭제
 
     <div id='calendar'></div>
@@ -392,7 +382,9 @@ select.filter {
         eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트	
           console.log(obj);
         },
-        
+        eventRemove: function(obj) { // 이벤트가 수정되면 발생하는 이벤트	
+            console.log(obj);
+          },        
 
       
 
@@ -402,7 +394,6 @@ select.filter {
             var title = prompt('부서 이름 사유 입력하세요');
             if (title) {
           	  const data = {
-          			    num: arg.num,
                         title: title,
                         start: arg.start,
                         end: arg.end,
@@ -435,39 +426,41 @@ select.filter {
             calendar.unselect()
           },
         
-        //이벤트 삭제
-        eventClick : function(arg) {
-            //  console.log(arg.event.extendedProps); {num : 값}
-            //  console.log(arg.event.extendedProps.num); 값
-                if (confirm('삭제하시겠습니까?')) {
-                	 
-                	 const data = {
-                			 num: arg.num
-                	 }
-                	 	arg.event.remove();
-                	 	console.log(data);
-                	 	
-                	 	 $.ajax({
-                             type:"DELETE",
-                             url:`/project/remove/${num}`,
-                              contentType: "application/json; charset=utf-8",
-                              dataType: "json",
-                              // num 값 넘겨줘야함
-                             data : JSON.stringify(data),
-                             success : function(result) {
-                                 console.log("삭제완료");
-                                
-                               
-                             }
-                              /* error : console.err,  */
-                         })  
-   
-                        
-                	
-                }
-     	              
-                
-            },
+          eventClick : function(arg) {
+              //  console.log(arg.event.extendedProps); {num : 값}
+              //  console.log(arg.event.extendedProps.num); 값
+             
+                  if (confirm('삭제하시겠습니까?')) {
+					const title = arg.target.value;
+                  	 	arg.event.remove(title);
+                  	 	console.log(title);
+                  	 	
+                  	 	fetch('/project/${title}',{
+                  	 		method: 'delete',
+                  	 	})
+                  	 	.then(res=>res.text())			
+                  	 	.then(text=>{
+                  	 		console.log(text);
+                  	 	})
+                  	 	.catch(console.error);
+                  	
+                  }
+  /*      	               $.ajax({
+                          type:"DELETE",
+                          url:'/project/remove',
+                           contentType: "application/json; charset=utf-8",
+                           dataType: "json",
+                           // num 값 넘겨줘야함
+                          data : JSON.stringify(event),
+                          success : function(result) {
+                              console.log("삭제완료");
+                             
+                            
+                          }
+                           error : console.err, 
+                      })  */
+                  
+              },
             
         
         // 이벤트 
