@@ -11,8 +11,7 @@
 	</insert>
 	<update id="update">
 		UPDATE notice
-		SET mid =#{mid},
-			subject = #{subject},
+		SET subject = #{subject},
 			content =#{content},
 			modidate=now()
 		WHERE nnum = #{nnum}
@@ -21,7 +20,7 @@
 	<!-- 삭제시 삭제여부를 y로 변경 -->
 	<update id="updateRemoveyn">
 		UPDATE notice
-		SET removeyn = 'y'
+		SET n_removeyn = 'y'
 		WHERE nnum = #{nnum}
 	</update>
 	
@@ -32,7 +31,7 @@
 	
 	
 	<select id="selectOne" resultType="Notice">
-		SELECT n.*, m.username
+		SELECT n.*, m.name
 		FROM notice n left join member m on (m.mid = n.mid)
 		WHERE nnum = #{nnum}
 	</select>
@@ -44,9 +43,9 @@
 				when date_format(notice.regidate, '%Y-%m-%d') &lt; date_format(now(),'%Y-%m-%d') then date_format(notice.regidate,'%m.%d')
 				else date_format(notice.regidate,'%H:%i')
 				end "createtime",
-			member.username
+			member.name
 		from notice left join member on (member.mid = notice.mid)
-		where removeyn = 'n'
+		where n_removeyn = 'n'
 		order by nnum
 
 	</select>
@@ -54,7 +53,7 @@
 	<!-- 전체게시물수 구하기 -->
 	<select id="selectTotalCnt" resultType="int">
 		SELECT COUNT(*) totalCnt FROM notice
-		WHERE removeyn = 'n'
+		WHERE n_removeyn = 'n'
 	</select>
 	
 	
@@ -67,22 +66,6 @@
 		SET readcnt = readcnt +1
 		WHERE nnum = #{nnum}
 	</update>
-	
-	<!-- 좋아요 + 1 -->
-	<update id="updateLikeCnt">
-		UPDATE notice
-		SET likecnt = likecnt +1
-		WHERE nnum = #{nnum}
-	</update>
-	
-	<!-- 싫어요 + 1 -->
-	<update id="updateDisLikeCnt">
-		UPDATE notice
-		SET dislikecnt = dislikecnt +1
-		WHERE nnum = #{nnum}
-	
-	</update>
-	
 	
 	
 	

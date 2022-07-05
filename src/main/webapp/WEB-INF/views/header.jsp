@@ -14,11 +14,12 @@
 			<span id="sessionEmail"><a href="${path}/member/info"> ${sessionScope.email} </a></span>
 			<a href="${path}/login" id="aLogin">로그인</a>
 			<a href="" id="aLogout">로그아웃</a>
-			<a href="${path}/member/join"  id ="aJoin">회원가입</a> --%>
+			<a href="${path}/member/join"  id ="aJoin">회원가입</a> --%>			
 			<input type="hidden" value="${path}/" id="contextpath"> 
-			<a href="${path}/login">로그인</a>
-			<a href="${path}">로그아웃</a>
-			<a href="${path}/member/join">회원가입</a>
+			<span id="sessionName"><a href="${path}/member/info"> ${sessionScope.name} </a></span>
+			<a href="${path}/login" id="aLogin">로그인</a>
+			<a href="" id="aLogout">로그아웃</a>
+			<a href="${path}/member/join" id="aJoin">회원가입</a>
 		</div>
 		<div id="logo">
 			<a href="${path}/" >
@@ -29,7 +30,7 @@
 	<hr>
 	<nav style="word-spacing: 5px">
                     <a href="${path}/"  class="menu-item">HOME</a>
-                    <a href="${path}/board/list"  class="menu-item">COMMUNITY</a>
+                    <a href="${path}/board/"  class="menu-item">COMMUNITY</a>
                     <a href="${path}/calendar"  class="menu-item">근태관리</a>
                     <a href="${path}/memberdetail"  class="menu-item">나의정보</a>            	
 	</nav>

@@ -93,15 +93,15 @@
 			<table border="1" id="divInfo">
 			<tr>
 				<th>아이디</th>
-				<td><input type="text"  name ="mid" id="mid" value="${member.mid}"></td>
+				<td><input type="text"  name ="mid" id="mod_mid" value="${member.mid}"></td>
 				<th>입사일</th>
 				<td><fmt:formatDate value="${member.regidate}" pattern="yyyy-MM-dd"/> </td>
 			</tr>
 			<tr>
 				<th>부서</th>
-				<td><input type="text"  id="teamname"  name="teamname" value="${member.teamname}"></td>
+				<td><input type="text"  id="teamname"  name="mod_teamname" value="${member.teamname}"></td>
 				<th>직급</th>
-				<td><input type="text"  id="gradename" name="gradename" value="${member.gradename}"></td>
+				<td><input type="text"  id="gradename" name="mod_gradename" value="${member.gradename}"></td>
 			</tr>
 			</table>
 		</div>

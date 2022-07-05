@@ -20,12 +20,13 @@ public class Member {
 	private Date regidate;
 	private Date modidate;
 	private String filename;
-	private String removeyn;
+	private String m_removeyn;
 	private String teamname;
 	private String gradename;
 	
 	
 	MultipartFile photofile;
+
 
 	public String getMid() {
 		return mid;
@@ -177,13 +178,13 @@ public class Member {
 	}
 
 
-	public String getRemoveyn() {
-		return removeyn;
+	public String getM_removeyn() {
+		return m_removeyn;
 	}
 
 
-	public void setRemoveyn(String removeyn) {
-		this.removeyn = removeyn;
+	public void setM_removeyn(String m_removeyn) {
+		this.m_removeyn = m_removeyn;
 	}
 
 
@@ -222,8 +223,9 @@ public class Member {
 		return "Member [mid=" + mid + ", email=" + email + ", name=" + name + ", passwd=" + passwd + ", birthday="
 				+ birthday + ", zipcode=" + zipcode + ", addrload=" + addrload + ", addrdetail=" + addrdetail
 				+ ", mobile=" + mobile + ", tcode=" + tcode + ", gcode=" + gcode + ", mcode=" + mcode + ", regidate="
-				+ regidate + ", modidate=" + modidate + ", filename=" + filename + ", removeyn=" + removeyn
+				+ regidate + ", modidate=" + modidate + ", filename=" + filename + ", m_removeyn=" + m_removeyn
 				+ ", teamname=" + teamname + ", gradename=" + gradename + ", photofile=" + photofile + "]";
 	}
 
+	
 }

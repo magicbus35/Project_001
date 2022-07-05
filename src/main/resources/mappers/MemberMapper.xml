@@ -39,7 +39,7 @@
 		select m.*, t.teamname, g.gradename 
 		from member m left join team t on (m.tcode = t.teamcode)
 		left join grade g on(m.gcode = g.gradecode)
-		where removeyn = 'n'
+		where m_removeyn = 'n'
 			<include refid="find"/>
 		
 		limit #{startNum} , #{perPage}
@@ -47,7 +47,7 @@
 	
 	<select id="selectTotalCnt" resultType="int">
 		select count(*) totalCnt from member
-		where removeyn = 'n' 
+		where m_removeyn = 'n' 
 		<include refid="find"/>
 	</select>
 	

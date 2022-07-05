@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/includeFile.jsp" %>
+<%@ include file="../include/sessionCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <script type="text/javascript" src="${path}/resources/js/boardDetail.js"></script>
 <script type="text/javascript" src="${path}/resources/js/boardReply.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/style_board_detail.css" type="text/css" />
-<link rel="stylesheet" href="${path}/resources/css/style"/>
+<link rel="stylesheet" href="${path}/resources/css/style.css"/>
 <!-- 댓글리스트 탬플릿 소스 -->
 <script type="text/x-handlebars-template" id="template_source">
 	{{#each .}}
@@ -26,7 +27,7 @@
 				<div class="hidden">
 					아이디 : <span id="replymid{{rnum}}">{{mid}}</span> <br>
 				</div>
-				<i class="fa-solid fa-user"></i><span> {{username}}</span> <br>
+				<i class="fa-solid fa-user"></i><span> {{name}}</span> <br>
 				<span> {{moditime}}</span> <br>
   				{{#sessionCheck mid rnum content}}
 				{{/sessionCheck}}
@@ -66,7 +67,7 @@
 				</tr>
 				<tr>
 					<th scope="row" style="text-align: center; padding-left: 0px">작성자</th>
-					<td>${board.username }</td>
+					<td>${board.name }</td>
 					<th scope="row" style="text-align: center; padding-left: 0px">작성시간</th>
 					<td>${board.createtime }</td>
 				</tr>
@@ -74,7 +75,7 @@
 					<th scope="row" style="text-align: center; padding-left: 0px">첨부파일</th>
 					<td colspan="3">
 						<c:forEach var="boardFile" items="${bflist}">
-							<i class="fas fa-download iconDownload">${boardFile.filename }</i>
+							<span class="iconDownload">${boardFile.filename }</span>
 						</c:forEach>
 					</td>
 				</tr>
@@ -108,7 +109,7 @@
 					    <li class="list-group-item">
 						<div class="form-inline mb-2">
 							<label for="replyemail"><i class="fa-solid fa-user"></i></label>
-							<input type="text" class="form-control ml-2" id="replyemail" value="${sessionScope.username}" readonly>
+							<input type="text" class="form-control ml-2" id="replyemail" value="${sessionScope.name}" readonly>
 						</div>
 						<textarea class="form-control" id="replycontent" rows="3"></textarea>
 						<button type="button" class="btn btn-dark mt-3" id="replyAdd">추가</button>

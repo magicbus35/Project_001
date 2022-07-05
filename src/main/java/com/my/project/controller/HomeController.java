@@ -19,7 +19,6 @@ import com.my.project.service.LoginService;
 
 @Controller
 public class HomeController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	private LoginService loginService;
 	
@@ -38,7 +37,7 @@ public class HomeController {
 	@PostMapping("login")
 	public String login(@RequestParam String mid, @RequestParam String passwd,
 			RedirectAttributes rattr, HttpSession session) {
-		Map<String, Object> rmap = loginService.loginCheck(mid, passwd);
+		Map<String, Object> rmap = loginService.loginCheck(mid, passwd, session);
 		//성공이면 홈 아니면 login로 이동
 		int code = (int)rmap.get("code");
 		rattr.addFlashAttribute("msg", rmap.get("msg"));

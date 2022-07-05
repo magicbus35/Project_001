@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-	$("#mid").attr("readonly",true);
+	$("#mod_mid").attr("readonly",true);
 	
 	
 	/*if($("#gcode").val() == 1){
@@ -10,7 +10,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	$("#teamname").attr("readonly", true);
+	$("#mod_teamname").attr("readonly", true);
 	/*if($("#gcode").val() == 1){
 		$("#teamname").removeattr("readonly");	
 		$("#mid").css("background-color",'#eaedf1');
@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-	$("#gradename").attr("readonly", true);
+	$("#mod_gradename").attr("readonly", true);
 	/*if($("#gcode").val() == 1){
 		$("#gradename").removeattr("readonly");	
 		$("#mid").css("background-color",'#eaedf1');

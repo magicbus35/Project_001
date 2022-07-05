@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/style_board_detail.css" type="text/css" />
-<link rel="stylesheet" href="${path}/resources/css/style"/>
+<link rel="stylesheet" href="${path}/resources/css/style.css"/>
 <script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
 </head>
 <body>
@@ -27,7 +27,7 @@
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td id="name">${sessionScope.username}</td>
+						<td id="name">${sessionScope.name}</td>
 					</tr>
 					<tr>
 						<th scope="row">제목</th>

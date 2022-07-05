@@ -4,10 +4,10 @@
  
  //document가 준비되었을때 
 $(function(){
-	const sessionEmail = $('#sessionEmail').text().trim();
-	console.log(sessionEmail);
+	const sessionName = $('#sessionName').text().trim();
+	console.log(sessionName);
 	//로그인, 로그아웃, 회원가입 제어
-	if (!sessionEmail){ //로그인 전
+	if (!sessionName){ //로그인 전
 		$('#aLogin').show();
 		$('#aLogout').hide();
 		$('#aJoin').show();

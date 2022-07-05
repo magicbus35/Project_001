@@ -11,8 +11,7 @@
 	</insert>
 	<update id="update">
 		UPDATE board
-		SET mid =#{mid},
-			subject = #{subject},
+		SET	subject = #{subject},
 			content =#{content},
 			modidate=now()
 		WHERE bnum = #{bnum}
@@ -21,7 +20,7 @@
 	<!-- 삭제시 삭제여부를 y로 변경 -->
 	<update id="updateRemoveyn">
 		UPDATE board
-		SET removeyn = 'y'
+		SET b_removeyn = 'y'
 		WHERE bnum = #{bnum}
 	</update>
 	
@@ -38,9 +37,10 @@
 				when date_format(b.regidate, '%Y-%m-%d') &lt; date_format(now(),'%Y-%m-%d') then date_format(b.regidate,'%m.%d')
 				else date_format(b.regidate,'%H:%i')
 				end "createtime",
-			m.username
+			m.name
 		FROM board b left join member m on (m.mid = b.mid)
 		WHERE bnum = #{bnum}
+		AND b_removeyn = 'n'
 	</select>
 	
 	<select id="selectList" resultType="Board">
@@ -51,9 +51,9 @@
 				else date_format(regidate,'%H:%i')
 				end "createtime",
 			ifnull(r.replycnt,0) replycnt
-		from (select board.*, member.username
+		from (select board.*, member.name
 			from board left join member on (member.mid = board.mid)
-			where removeyn = 'n'
+			where b_removeyn = 'n'
 			<include refid="find"/>) b left join 
 		(select bnum, count(*) replycnt from reply
 			group by bnum) r
@@ -66,14 +66,14 @@
 	<select id="selectTotalCnt" resultType="int">
 		select count(*) totcnt
 		from board left join member on (member.mid = board.mid)
-		where removeyn = 'n'
+		where b_removeyn = 'n'
 	    <include refid="find"/>
 	</select>
 	
 	<!-- 조회조건 sql문 -->
 	<sql id="find">
 		<if test="findkey =='name'">
-			AND username LIKE  concat('%' , #{findvalue} , '%')
+			AND name LIKE  concat('%' , #{findvalue} , '%')
 		</if>
 		<if test="findkey =='subject'">
 			AND subject LIKE concat('%' , #{findvalue} , '%')
@@ -94,21 +94,6 @@
 		UPDATE board
 		SET readcnt = readcnt +1
 		WHERE bnum = #{bnum}
-	</update>
-	
-	<!-- 좋아요 + 1 -->
-	<update id="updateLikeCnt">
-		UPDATE board
-		SET likecnt = likecnt +1
-		WHERE bnum = #{bnum}
-	</update>
-	
-	<!-- 싫어요 + 1 -->
-	<update id="updateDisLikeCnt">
-		UPDATE board
-		SET dislikecnt = dislikecnt +1
-		WHERE bnum = #{bnum}
-	
 	</update>
 	
 	

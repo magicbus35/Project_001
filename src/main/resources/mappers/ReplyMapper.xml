@@ -20,12 +20,12 @@
 		WHERE rnum = #{rnum}
 	</update>
 	<select id="selectOne" resultType="Reply">
-		SELECT r.*,date_format(r.modidate, '%m.%d %H:%i') moditime, m.username
+		SELECT r.*,date_format(r.modidate, '%m.%d %H:%i') moditime, m.name
 		FROM reply r left join member m on (m.mid = r.mid)
 		WHERE rnum = #{rnum}
 	</select>
 	<select id="selectList" resultType="Reply">
-		SELECT r.*,date_format(r.modidate, '%m.%d %H:%i') moditime, m.username
+		SELECT r.*,date_format(r.modidate, '%m.%d %H:%i') moditime, m.name
 		FROM reply r left join member m on (m.mid = r.mid)
 		WHERE bnum = #{bnum}
 		ORDER BY restep

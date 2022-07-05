@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Board {
 	private int bnum;
-	private String username;
+	private String name;
 	private String mid;
 	private String subject;
 	private String content;
@@ -17,7 +17,7 @@ public class Board {
 	private Date regidate;
 	private String createtime;
 	private Date modidate;
-	private String removeyn;
+	private String b_removeyn;
 	private int replycnt;
 	
 	List<MultipartFile> files; //파일들 
@@ -30,12 +30,12 @@ public class Board {
 		this.bnum = bnum;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getMid() {
@@ -110,12 +110,12 @@ public class Board {
 		this.modidate = modidate;
 	}
 
-	public String getRemoveyn() {
-		return removeyn;
+	public String getB_removeyn() {
+		return b_removeyn;
 	}
 
-	public void setRemoveyn(String removeyn) {
-		this.removeyn = removeyn;
+	public void setB_removeyn(String b_removeyn) {
+		this.b_removeyn = b_removeyn;
 	}
 
 	public int getReplycnt() {
@@ -136,11 +136,13 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [bnum=" + bnum + ", username=" + username + ", mid=" + mid + ", subject=" + subject + ", content="
+		return "Board [bnum=" + bnum + ", name=" + name + ", mid=" + mid + ", subject=" + subject + ", content="
 				+ content + ", readcnt=" + readcnt + ", likecnt=" + likecnt + ", dislikecnt=" + dislikecnt
-				+ ", regidate=" + regidate + ", createtime=" + createtime + ", modidate=" + modidate + ", removeyn="
-				+ removeyn + ", replycnt=" + replycnt + ", files=" + files + "]";
+				+ ", regidate=" + regidate + ", createtime=" + createtime + ", modidate=" + modidate + ", b_removeyn="
+				+ b_removeyn + ", replycnt=" + replycnt + ", files=" + files + "]";
 	}
 
+	
+	
 	
 }

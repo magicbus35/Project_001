@@ -6,7 +6,7 @@
 function removeCheck(path, bnum){
 	if(!confirm('삭제 하시겠습니까?')) return ;
 
-	location.href=path+'/board/remove?bnum='+bnum;
+	location.href=path+'/board/boardRemove?bnum='+bnum;
 }
 
 //로딩이 완료된후

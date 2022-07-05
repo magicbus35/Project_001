@@ -23,9 +23,8 @@
 
 <!-- css -->
 <link rel="stylesheet" href="${path}/resources/css/style.css">
-  
-<!-- css --> 
-<%-- <link rel = "stylesheet" href="${path}/resources/css/style.css"> --%>
+
+
 <script>
 	//값이 있으면 true, 없으면 false
 	if('${msg}'){

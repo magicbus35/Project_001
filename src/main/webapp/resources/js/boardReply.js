@@ -4,6 +4,7 @@
 
  //윈도우가 로딩이 완료된 후
 window.addEventListener('load', ()=>{
+	const path = $("#contextpath").val();
 	
 	//헬퍼 작성
 	//세션mid과 작성자mid이 같은지 체크(같을때만 버튼을 리턴)
@@ -41,7 +42,7 @@ window.addEventListener('load', ()=>{
 		$('#replycontnet').val='';
 		
 		//댓글추가 div 이동
-		const hr = $(`#hr`);
+		const hr = $('#hr');
 		const divReplyAdd = $('#divReplyAdd');
 		hr.after(divReplyAdd);
 		//댓글추가 창 숨기기
@@ -63,7 +64,7 @@ window.addEventListener('load', ()=>{
 		const bnum = $('#bnum').text();
 		//console.log(bnum);
 		//ajax 서버 호출(get)
-		fetch(`/myapp/reply/list/${bnum}`)
+		fetch(`${path}/reply/list/${bnum}`)
 		.then(res=>res.json())
 		.then(data=>{
 			//console.log(data);
@@ -142,7 +143,7 @@ window.addEventListener('load', ()=>{
 		console.log(rnum);
 
 		//ajax 서버 호출
-		fetch(`/myapp/reply/${rnum}`,{
+		fetch(`${path}/reply/${rnum}`,{
 			method : 'delete',
 		})
 		.then(res=>res.text())
@@ -176,7 +177,7 @@ window.addEventListener('load', ()=>{
 	$('#replyAdd').click(()=>{
 		//추가할 내용 읽어오기
 		const bnum = $('#bnum').text();
-		const mid = $('#replymid').val();
+		const mid = $('#curMid').val();
 		const content = $('#replycontent').val();
 		const restep = $('#restep').val(); // 댓글의 순서
 		const relevel = $('#relevel').val(); // 댓글의 레벨
@@ -198,7 +199,7 @@ window.addEventListener('load', ()=>{
 		
 		//jquery 서버 호출
 		$.ajax({
-			url : '/myapp/reply/',
+			url : `${path}/reply/`,
 			type : 'post',
 			contentType : 'application/json', //보내는 데이터의 타입
 			data: JSON.stringify(data), //보내는 데이터  json의 문자열
@@ -227,7 +228,7 @@ window.addEventListener('load', ()=>{
 		};
 		
 		$.ajax({
-			url : '/myapp/reply/',
+			url : `${path}/reply/`,
 			type : 'put',
 			contentType : 'application/json',
 			data : JSON.stringify(data),//보낼데이터 json문자열 변환

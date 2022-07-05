@@ -5,7 +5,7 @@ import java.util.Date;
 public class Reply {
 	private int rnum;
 	private int bnum;
-	private String username;
+	private String name;
 	private String mid;
 	private String content;
 	private int restep;
@@ -13,6 +13,7 @@ public class Reply {
 	private Date regidate;
 	private Date modidate;
 	private String moditime;
+	private String r_removeyn;
 	public int getRnum() {
 		return rnum;
 	}
@@ -25,11 +26,11 @@ public class Reply {
 	public void setBnum(int bnum) {
 		this.bnum = bnum;
 	}
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getMid() {
 		return mid;
@@ -73,11 +74,18 @@ public class Reply {
 	public void setModitime(String moditime) {
 		this.moditime = moditime;
 	}
+	public String getR_removeyn() {
+		return r_removeyn;
+	}
+	public void setR_removeyn(String r_removeyn) {
+		this.r_removeyn = r_removeyn;
+	}
 	@Override
 	public String toString() {
-		return "Reply [rnum=" + rnum + ", bnum=" + bnum + ", username=" + username + ", mid=" + mid + ", content="
-				+ content + ", restep=" + restep + ", relevel=" + relevel + ", regidate=" + regidate + ", modidate="
-				+ modidate + ", moditime=" + moditime + "]";
+		return "Reply [rnum=" + rnum + ", bnum=" + bnum + ", name=" + name + ", mid=" + mid + ", content=" + content
+				+ ", restep=" + restep + ", relevel=" + relevel + ", regidate=" + regidate + ", modidate=" + modidate
+				+ ", moditime=" + moditime + ", r_removeyn=" + r_removeyn + "]";
 	}
+	
 	
 }

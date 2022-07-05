@@ -45,7 +45,7 @@ public class ReplyRepositoryImpl implements ReplyRepository{
 	@Override
 	public int updateRestep(Reply reply) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("org.company.myapp.ReplyMapper.updateRestep", reply);
+		return sqlSession.update("com.my.project.ReplyMapper.updateRestep", reply);
 	}
 
 }

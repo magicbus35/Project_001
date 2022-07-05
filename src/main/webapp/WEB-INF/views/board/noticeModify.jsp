@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/style"/>
+<link rel="stylesheet" href="${path}/resources/css/style.css"/>
 </head>
 <body>
 <div class="container">
@@ -25,7 +25,7 @@
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" name="username" readonly="readonly" value="${notice.username}"> </td>
+				<td><input type="text" name="name" readonly="readonly" value="${notice.name}"> </td>
 			</tr>
 			<tr>
 				<th>제목</th>

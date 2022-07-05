@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Notice {
 	private int nnum;
-	private String username;
+	private String name;
 	private String mid;
 	private String subject;
 	private String content;
@@ -15,7 +15,7 @@ public class Notice {
 	private Date regidate;
 	private String createtime;
 	private Date modidate;
-	private String removeyn;
+	private String n_removeyn;
 	
 	List<MultipartFile> files; //파일들 
 
@@ -27,12 +27,12 @@ public class Notice {
 		this.nnum = nnum;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getMid() {
@@ -91,12 +91,12 @@ public class Notice {
 		this.modidate = modidate;
 	}
 
-	public String getRemoveyn() {
-		return removeyn;
+	public String getN_removeyn() {
+		return n_removeyn;
 	}
 
-	public void setRemoveyn(String removeyn) {
-		this.removeyn = removeyn;
+	public void setN_removeyn(String n_removeyn) {
+		this.n_removeyn = n_removeyn;
 	}
 
 	public List<MultipartFile> getFiles() {
@@ -109,10 +109,12 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [nnum=" + nnum + ", username=" + username + ", mid=" + mid + ", subject=" + subject
-				+ ", content=" + content + ", readcnt=" + readcnt + ", regidate=" + regidate + ", createtime="
-				+ createtime + ", modidate=" + modidate + ", removeyn=" + removeyn + ", files=" + files + "]";
+		return "Notice [nnum=" + nnum + ", name=" + name + ", mid=" + mid + ", subject=" + subject + ", content="
+				+ content + ", readcnt=" + readcnt + ", regidate=" + regidate + ", createtime=" + createtime
+				+ ", modidate=" + modidate + ", n_removeyn=" + n_removeyn + ", files=" + files + "]";
 	}
 
 	
+
+
 }

@@ -3,6 +3,8 @@ package com.my.project.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,7 @@ public class LoginServiceImpl implements LoginService{
 	
 	
 	@Override
-	public Map<String, Object> loginCheck(String mid, String passwd) {
+	public Map<String, Object> loginCheck(String mid, String passwd, HttpSession session) {
 		Map<String , Object> rmap = new HashMap<>();
 		//code, msg
 		//0 : 로그인 완료
@@ -48,6 +50,8 @@ public class LoginServiceImpl implements LoginService{
 			return rmap;
 		}
 		
+		session.setAttribute("mid", mid);
+		session.setAttribute("name", member.getName());
 		
 		//성공
 		rmap.put("code", 0);

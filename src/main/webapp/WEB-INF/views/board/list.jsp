@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/style"/>
+<link rel="stylesheet" href="${path}/resources/css/style.css"/>
 <link rel="stylesheet" href="${path}/resources/css/style_board.css" type="text/css" />
 </head>
 <%@ include file="../header.jsp" %>
@@ -25,12 +25,12 @@
                 <form action="">
                     <div class="search-wrap">
                     	<select name="findkey" id="selSearchOption">
-	        	        	<option value="subcon" <c:out value="${page.findkey=='subcon'?'selected':''}"/>>제목+내용</option>
-							<option value="subject" <c:out value="${page.findkey=='subject'?'selected':''}"/>>제목</option>
-							<option value="content" <c:out value="${page.findkey=='content'?'selected':''}"/>>내용</option>
-							<option value="name" <c:out value="${page.findkey=='name'?'selected':''}"/>>작성자</option>   
+	        	        	<option value="subcon" <c:out value="${b_page.findkey=='subcon'?'selected':''}"/>>제목+내용</option>
+							<option value="subject" <c:out value="${b_page.findkey=='subject'?'selected':''}"/>>제목</option>
+							<option value="content" <c:out value="${b_page.findkey=='content'?'selected':''}"/>>내용</option>
+							<option value="name" <c:out value="${b_page.findkey=='name'?'selected':''}"/>>작성자</option>   
 	                 	</select>
-                        <input id="search" type="search" name="findvalue"  placeholder="검색어를 입력해주세요." value="${page.findvalue}" >
+                        <input id="search" type="search" name="findvalue"  placeholder="검색어를 입력해주세요." value="${b_page.findvalue}" >
                         <button type="submit" class="btn btn-dark">검색</button>
                     </div>
                 </form>
@@ -46,7 +46,7 @@
                 <tr>
                     <th scope="col" class="th-num">번호</th>
                     <th scope="col" class="th-title">제목</th>
-                    <th scope="col" class="th-username">작성자</th>
+                    <th scope="col" class="th-name">작성자</th>
                     <th scope="col" class="th-date">작성일</th>
                     <th scope="col" class="th-readcnt">조회수</th>
                 </tr>
@@ -56,7 +56,7 @@
 		                <tr>
 		                    <td><i class="fa-solid fa-thumbtack"></i></td>
 		                    <th><div class="list-title" onclick="location.href='${path}/board/noticeDetail?nnum=${notice.nnum}'"><a href="${path}/board/noticeDetail?nnum=${notice.nnum}">${notice.subject}</a></div></th>
-		                    <td><a href="${path}/board/list?findkey=name&findvalue=${notice.username}">${notice.username}</a></td>
+		                    <td><a href="${path}/board/list?findkey=name&findvalue=${notice.name}">${notice.name}</a></td>
 		                    <td>${notice.createtime}</td>
 		                    <td>${notice.readcnt}</td>
 		                </tr>
@@ -70,7 +70,7 @@
 		                    		<c:if test="${board.replycnt ne 0}">
 										[&nbsp;<c:out value="${board.replycnt}"/>&nbsp;]
 									</c:if></a></th>
-		                    <td><a href="${path}/board/list?findkey=name&findvalue=${board.username}">${board.username}</a></td>
+		                    <td><a href="${path}/board/list?findkey=name&findvalue=${board.name}">${board.name}</a></td>
 		                    <td>${board.createtime}</td>
 		                    <td>${board.readcnt}</td>
 		                </tr>
@@ -81,14 +81,14 @@
 			<i id="noticeAdd" onclick="location.href='${path}/board/noticeAdd'" class="fa-solid fa-bullhorn fa-pull-right fa-border">공지하기</i>
         </div>
                     <div id=divPaging>
-				<div><c:if test="${p_page.startPage != 1}">
-					<a href="${path}/board/list?curPage=${p_page.startPage-1}">◀</a></c:if>
+				<div><c:if test="${b_page.startPage != 1}">
+					<a href="${path}/board/list?curPage=${b_page.startPage-1}">◀</a></c:if>
 				</div>
-				<div><c:forEach var="i" begin="${p_page.startPage}" end="${p_page.endPage}">
+				<div><c:forEach var="i" begin="${b_page.startPage}" end="${b_page.endPage}">
 					<a href="${path}/board/list?curPage=${i}">${i}</a></c:forEach>
 				</div>	
-				<div><c:if test="${p_page.endPage<p_page.totPage}">	
-					<a href="${path}/board/list?curPage=${p_page.endPage+1}">▶</a></c:if>
+				<div><c:if test="${b_page.endPage<b_page.totPage}">	
+					<a href="${path}/board/list?curPage=${b_page.endPage+1}">▶</a></c:if>
 				</div>
 				<%@include file="../footer.jsp" %>
 			</div>

@@ -11,7 +11,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 <script type="text/javascript" src="${path}/resources/js/noticeDetail.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/style_board_detail.css" type="text/css" />
-<link rel="stylesheet" href="${path}/resources/css/style"/>
+<link rel="stylesheet" href="${path}/resources/css/style.css"/>
 </head>
 <body>
 	<div class="divide">
@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<th scope="row">작성자</th>
-					<td>${notice.username }</td>
+					<td>${notice.name }</td>
 					<th scope="row">작성시간</th>
 					<td>${notice.createtime }</td>
 				</tr>
