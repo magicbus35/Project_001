@@ -55,7 +55,7 @@
 	                <c:forEach var="notice" items="${nlist}">
 		                <tr>
 		                    <td><i class="fa-solid fa-thumbtack"></i></td>
-		                    <th><div class="list-title" onclick="location.href='${path}/board/noticeDetail?nnum=${notice.nnum}'"><a href="${path}/board/noticeDetail?nnum=${notice.nnum}">${notice.subject}</a></div></th>
+		                    <th class="list-title" onclick="location.href='${path}/board/noticeDetail?nnum=${notice.nnum}'">${notice.subject}</th>
 		                    <td><a href="${path}/board/list?findkey=name&findvalue=${notice.name}">${notice.name}</a></td>
 		                    <td>${notice.createtime}</td>
 		                    <td>${notice.readcnt}</td>
@@ -66,10 +66,10 @@
 	                <c:forEach var="board" items="${blist}">
 		                <tr>
 		                    <td>${board.bnum}</td>
-		                    <th style="font-weight: normal"><a href="${path}/board/boardDetail?bnum=${board.bnum}">${board.subject}
+		                    <th style="font-weight: normal" class="list-title" onclick="location.href='${path}/board/boardDetail?bnum=${board.bnum}'">${board.subject}
 		                    		<c:if test="${board.replycnt ne 0}">
 										[&nbsp;<c:out value="${board.replycnt}"/>&nbsp;]
-									</c:if></a></th>
+									</c:if></th>
 		                    <td><a href="${path}/board/list?findkey=name&findvalue=${board.name}">${board.name}</a></td>
 		                    <td>${board.createtime}</td>
 		                    <td>${board.readcnt}</td>
@@ -78,7 +78,7 @@
                 </tbody>
             </table>
             <i id="boardAdd" onclick="location.href='${path}/board/boardAdd'" class="fa-solid fa-pencil fa-pull-right fa-border">글쓰기</i>
-			<i id="noticeAdd" onclick="location.href='${path}/board/noticeAdd'" class="fa-solid fa-bullhorn fa-pull-right fa-border">공지하기</i>
+			<i id="noticeAdd" onclick="location.href='${path}/board/noticeAdd'" class="fa-solid fa-bullhorn fa-pull-right fa-border manager">공지하기</i>
         </div>
                     <div id=divPaging>
 				<div><c:if test="${b_page.startPage != 1}">

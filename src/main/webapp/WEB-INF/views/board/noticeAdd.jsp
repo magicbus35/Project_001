@@ -12,6 +12,7 @@
 <script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
 </head>
 <body>
+<%@ include file="../header.jsp" %>
 	<form action="${path}/board/noticeAdd" method="post" enctype="multipart/form-data" id="frm" >
 		<div class="divide">
 			<table class="board_view">
@@ -27,7 +28,7 @@
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td id="name">${sessionScope.name}</td>
+						<td>${sessionScope.name}</td>
 					</tr>
 					<tr>
 						<th scope="row">제목</th>
@@ -49,15 +50,10 @@
 				</tbody>
 			</table>
 			<div class="btn_location">
-				<button class="btn" >작성하기</button>
+				<button class="btn manager" >작성하기</button>
 				<button class="btn" type="reset" OnClick="location.href='${path}/board/list'">목록으로</button>
 			</div>
 		</div>	
 	</form>
-	<script type="text/javascript">
-		$(document).ready(function(){
-					
-		});
-	</script>
 </body>
 </html>

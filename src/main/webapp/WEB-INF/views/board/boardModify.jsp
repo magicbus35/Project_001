@@ -11,6 +11,7 @@
 <script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
 </head>
 <body>
+<%@ include file="../header.jsp" %>
 	<form id="frm" action="${path}/board/boardModify" method="post" enctype="multipart/form-data">
 		<div class="divide">
 			<table class="board_view">
@@ -70,7 +71,8 @@
 			</table>
 			<div class="btn_location">
 				<button class="btn">저장하기</button>
-				<button class="btn" type="reset" OnClick="location.href='${path}/board/list'">목록으로</button>
+				<button class="btn" onclick="location.href='${path}/board/list'">리스트</button>
+				<button class="btn" type="reset" OnClick="location.href='${path}/board/boardDetail?bnum=${board.bnum }'">뒤로가기</button>
 			</div>
 		</div>
 	</form>

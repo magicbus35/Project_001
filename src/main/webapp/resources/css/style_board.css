@@ -221,3 +221,11 @@ section.board {
 #bold{
 	font-weight: bold;
 }
+
+.fa-thumbtack{
+	color: red;
+}
+
+.fa-bullhorn{
+	color: red;
+}

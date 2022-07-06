@@ -16,7 +16,7 @@ window.addEventListener('load', ()=>{
 		if (content == ''){
 			return '<pre>삭제된 댓글입니다</pre> <br>';
 		}else if (content != '' && curMid == mid){
-			return '<pre id="content"' +rnum+'>'+content+'</pre> <br>'+
+			return '<pre id="content'+rnum+'">'+content+'</pre> <br>'+
 					'<button class="reReplyModify" value="'+ rnum +'">수정</button>'+' '+
 					'<button class="reReplyRemove" value="'+ rnum +'">삭제</button>';
 		}else if (content != '' && curMid != mid){
@@ -157,8 +157,6 @@ window.addEventListener('load', ()=>{
 	//댓글리스트의 수정 버튼을 클릭했을때
 	$('#divReplyList').on('click', '.reReplyModify', (e)=>{
 		const rnum = $(e.target).val();
-		console.log(rnum);
-		console.log(rnum);
 		console.log(rnum);
 		//댓글수정 div 이동
 		const reply = $(`#reply${rnum}`);

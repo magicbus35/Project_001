@@ -75,7 +75,7 @@
 					<th scope="row" style="text-align: center; padding-left: 0px">첨부파일</th>
 					<td colspan="3">
 						<c:forEach var="boardFile" items="${bflist}">
-							<span class="iconDownload">${boardFile.filename }</span>
+							<span class="iconDownload">${boardFile.filename }</span><br>
 						</c:forEach>
 					</td>
 				</tr>
@@ -138,9 +138,6 @@
 			<!-- 댓글리스트 -->
 			<div id="divReplyList"></div>
 		</div>
-
-
 	</div>
-	
 </body>
 </html>

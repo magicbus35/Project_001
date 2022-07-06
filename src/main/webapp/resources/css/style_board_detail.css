@@ -40,3 +40,16 @@ form textarea{
 .iconDownload{
 	cursor: pointer;
 }
+.divSpace{
+	width: 50px;
+}
+
+.divReply{
+	display: flex;
+}
+.moveRight{
+	text-align: right;
+}
+.reply_location{
+	width: 960px;
+}

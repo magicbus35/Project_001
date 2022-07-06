@@ -31,9 +31,16 @@
 	
 	
 	<select id="selectOne" resultType="Notice">
-		SELECT n.*, m.name
+		SELECT 
+			n.*,
+			case
+				when date_format(n.regidate, '%Y-%m-%d') &lt; date_format(now(),'%Y-%m-%d') then date_format(n.regidate,'%m.%d')
+				else date_format(n.regidate,'%H:%i')
+				end "createtime",
+			m.name
 		FROM notice n left join member m on (m.mid = n.mid)
 		WHERE nnum = #{nnum}
+		and n_removeyn = 'n'
 	</select>
 	
 	<select id="selectList" resultType="Notice">

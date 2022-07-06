@@ -168,10 +168,14 @@ public class BoardController {
 	
 	@GetMapping("noticeAdd")
 	public void noticeAdd(HttpSession session, Model model) {
-		//추가페이지이동		
-		String email = (String) session.getAttribute("email");
-		Member member = memberService.selectOne(email);
-		model.addAttribute("member", member);
+		String curMcode = (String) session.getAttribute("mcode");
+		if (curMcode.equals('0')) {
+			//추가페이지이동
+			String email = (String) session.getAttribute("email");
+			Member member = memberService.selectOne(email);
+			model.addAttribute("member", member);
+		}
+		
 	}
 	
 	//공지추가

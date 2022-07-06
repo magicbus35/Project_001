@@ -5,7 +5,20 @@
  //document가 준비되었을때 
 $(function(){
 	const sessionName = $('#sessionName').text().trim();
+	const sessionMcode = $('#sessionMcode').val();
+	const sessionMid = $('#sessionMid').val();
+	const boardMid = $('#boardMid').val();
 	console.log(sessionName);
+	console.log(sessionMcode);
+	console.log(sessionMid);
+	console.log(boardMid);
+	//관리자 버튼 보이기
+	if (sessionMcode == '0'){
+		$('.manager').show();
+	}else{
+		$('.manager').hide();
+	}
+	
 	//로그인, 로그아웃, 회원가입 제어
 	if (!sessionName){ //로그인 전
 		$('#aLogin').show();

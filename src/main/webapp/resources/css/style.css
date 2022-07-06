@@ -18,23 +18,3 @@ nav{
 	display: flex;	
  	justify-content: space-around;
 }
-
-
-/* 차영준 */
-.fa-bullhorn{
-	color: red;
-}
-
-.divSpace{
-	width: 50px;
-}
-
-.divReply{
-	display: flex;
-}
-.moveRight{
-	text-align: right;
-}
-.reply_location{
-	width: 960px;
-}

@@ -52,6 +52,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		session.setAttribute("mid", mid);
 		session.setAttribute("name", member.getName());
+		session.setAttribute("mcode", member.getMcode());
 		
 		//성공
 		rmap.put("code", 0);

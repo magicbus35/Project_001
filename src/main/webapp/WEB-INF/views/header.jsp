@@ -15,7 +15,9 @@
 			<a href="${path}/login" id="aLogin">로그인</a>
 			<a href="" id="aLogout">로그아웃</a>
 			<a href="${path}/member/join"  id ="aJoin">회원가입</a> --%>			
-			<input type="hidden" value="${path}/" id="contextpath"> 
+			<input type="hidden" id="contextpath" value="${path}/">
+			<input type="hidden" id="sessionMcode" value="${sessionScope.mcode}">
+			<input type="hidden" id="sessionMid" value="${sessionScope.mid}">
 			<span id="sessionName"><a href="${path}/member/info"> ${sessionScope.name} </a></span>
 			<a href="${path}/login" id="aLogin">로그인</a>
 			<a href="" id="aLogout">로그아웃</a>
