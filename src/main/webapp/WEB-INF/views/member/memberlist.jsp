@@ -7,56 +7,93 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${path}/resources/css/style_board.css">
+<style type="text/css">
+	.board-table{
+		
+		
+	}
+	.board-table th, .board-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+	}
+	 .board-table th:first-child, .board-table td:first-child {
+      border-left: 0;
+    }
+    .board-table th:last-child, .board-table td:last-child {
+      border-right: 0;
+    }
+    .board-table tr td:first-child{
+      text-align: center;
+    }
+
+</style>
+
+
+
 </head>
 <body >
-	<%@include file="../header.jsp" %>
-		<h2>조직도 리스트</h2>
-		<form action="${path}/member/memberlist">
-			<select name="findkey">
-				<option value="name" <c:out value="${m_page.findkey=='name'?'selected':''}"/>>성명</option>
-				<option value="tcode" <c:out value="${m_page.findkey=='tcode'?'selected':''}"/>>부서명</option>
-				<option value="gcode" <c:out value="${m_page.findkey=='gcode'?'selected':''}"/>>직급명</option>
-			</select>
-			<input type="text" name="findvalue" value="${m_page.findvalue}">
-			<button>조회</button>
-		</form>
-		
+    <div class="container">
+        <h3>조직도 리스트</h3>
+    </div>
+    
+    <div id="board-search">
+        <div class="container">
+            <div class="search-window">
+                <form action="${path}/member/memberlist">
+                    <div class="search-wrap">
+                        <select name="findkey">
+							<option value="name" <c:out value="${m_page.findkey=='name'?'selected':''}"/>>성명</option>
+							<option value="teamname" <c:out value="${m_page.findkey=='teamname'?'selected':''}"/>>부서명</option>
+							<option value="gradename" <c:out value="${m_page.findkey=='gradename'?'selected':''}"/>>직급명</option>
+						</select>
+                        <input id="search" type="search" name="findvalue"  placeholder="검색어를 입력해주세요." value="${m_page.findvalue}">
+                        <button type="submit" class="btn btn-dark">검색</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+    
+    <div id="board-list">
+        <div class="container">
+            <table class="board-table">
+                <thead>
+	                <tr>
+	                    <th scope="col" class="th-num">부서</th>
+	                    <th scope="col" class="th-title">직급</th>
+	                    <th scope="col" class="th-date">성명</th>
+	                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                	<c:forEach var ="member" items="${mlist}">
+						<tr>
+							<td>${member.teamname}</td>
+							<td>${member.gradename} </td>
+							<td><a href = "${path}/member/memberdetail?mid=${member.mid}">${member.name}</a></td>
+						</tr>
+		        	</c:forEach> 
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 	
-		<form action="memberlist" method="get">
-			<table border="1">
-				<tr>
-					<th>부서</th>
-					<th>직급</th>
-					<th>성명</th>
-				</tr>
-			
-			
-			
-			<c:forEach var ="member" items="${mlist}">
-				<tr>
-					<td>${member.teamname}</td>
-					<td>${member.gradename} </td>
-					<td><a href = "${path}/member/memberdetail?mid=${member.mid}">${member.name}</a></td>
-				</tr>
-				
-			
-			</c:forEach> 
-		</table>
-		<%-- ${page} --%>
-		<hr>
-			<c:if test="${m_page.startPage != 1}">
-				<a href="${path}/member/memberlist?curPage=${m_page.startPage-1}">이전</a>
-			</c:if>
-			
-			<c:forEach var="i" begin="${m_page.startPage}" end="${m_page.endPage}">
-				<a href="${path}/member/memberlist?curPage=${i}">${i}</a> 
-			</c:forEach>
-		
-			<c:if test="${m_page.endPage<m_page.totPage}">
-				<a href="${path}/member/memberlist?curPage=${m_page.endPage+1}">다음</a>
-			</c:if>
-		</form>
+	<hr>
+	<c:if test="${m_page.startPage != 1}">
+		<a href="${path}/member/memberlist?curPage=${m_page.startPage-1}">이전</a>
+	</c:if>
 	
-	<%@include file="../footer.jsp" %>
+	<c:forEach var="i" begin="${m_page.startPage}" end="${m_page.endPage}">
+		<a href="${path}/member/memberlist?curPage=${i}">${i}</a> 
+	</c:forEach>
+
+	<c:if test="${m_page.endPage<m_page.totPage}">
+		<a href="${path}/member/memberlist?curPage=${m_page.endPage+1}">다음</a>
+	</c:if>
+	
+	
 </body>
 </html>

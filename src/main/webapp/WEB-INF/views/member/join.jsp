@@ -33,7 +33,11 @@
 			</tr>			
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="name" value="${member.name}"> </td>
+				<td><input type="text" name="name" id="name" value="${member.name}"> </td>
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td><input type="text" name="birthday" id="birthday" value="${member.birthday}"></td>
 			</tr>
 			<tr>
 				<th>우편번호</th>

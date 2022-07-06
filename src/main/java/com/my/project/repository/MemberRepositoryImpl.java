@@ -54,5 +54,12 @@ public class MemberRepositoryImpl implements MemberRepository{
 		return sqlSession.selectOne("com.my.project.MemberMapper.selectTotalCnt", m_page);
 	}
 
+
+	@Override
+	public int delete(String mid) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("com.my.project.MemberMapper.delete", mid);
+	}
+
 	
 }

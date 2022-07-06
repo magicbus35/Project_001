@@ -43,7 +43,7 @@ public class MemberController {
 			session.setAttribute("mid", member.getMid());
 			session.setAttribute("name", member.getName());
 			session.setAttribute("authCode", rmap.get("authCode"));
-			return "redirect:home";	
+			return "redirect:/";	
 		}
 		//실패시(forward방식)
 		//model.addAttribute("member", member); 생략
@@ -93,12 +93,7 @@ public class MemberController {
 		
 	}
 	
-//	@GetMapping("membermodify")
-//	public void membermodify(@RequestParam  (value ="mid", required = false)String mid, Model model) {
-//		model.addAttribute("member", memberService.selectOne(mid)); 
-//		
-//	}	
-	
+
 	 // 회원 수정 저장
 	  
 	 @PostMapping("membermodify") 
@@ -111,22 +106,23 @@ public class MemberController {
 
 
 	  @GetMapping("newpasswd")
-	  public String newpasswd(String mid, Model model, RedirectAttributes rattr) {
-		  rattr.addAttribute("mid", mid); //url에 포함
+	  public String newpasswd(String mid, Model model) {
+		  Member member = memberService.selectOne(mid);
+		  model.addAttribute("member", member);
 		  return "/member/newpasswd";
 	  }
 	  
-	 
-	
 
 	@PostMapping("newpasswd")
-	public String newpasswd(Member member, String newPasswd, Model model,RedirectAttributes rattr) {
-		ErrorCode errorCode = memberService.pwupdate(member, newPasswd);
+	public String newpasswd(Member member, String mid, String oldPasswd, String newPasswd, Model model,RedirectAttributes rattr) {
+		member = memberService.selectOne(mid);
+		ErrorCode errorCode = memberService.pwupdate(member, oldPasswd, newPasswd);
 		if (errorCode.getCode() != 0) { //실패시
 			model.addAttribute("msg", errorCode.getMsg());
 			return "member/newpasswd";
 		}else { //성공시 info
 			rattr.addFlashAttribute("msg", errorCode.getMsg());
+			rattr.addAttribute("mid", member.getMid());
 			return "redirect:/member/memberdetail";
 		}
 

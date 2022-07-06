@@ -15,7 +15,7 @@ public interface MemberService {
 	
 	ErrorCode update(Member member) throws Exception;
 
-	ErrorCode pwupdate(Member member, String newPasswd);
+	ErrorCode pwupdate(Member member, String newPasswd, String newPasswd2) ;
 	
 	List<Member> selectList(M_Page m_page);
 	

@@ -5,9 +5,22 @@
   
 <mapper namespace="com.my.project.MemberMapper">
 
+
+
+	<insert id="insert">
+		insert into member(mid, email, passwd, name, birthday, zipcode, addrload, addrdetail, mobile, filename)
+		values(#{mid}, #{email}, #{passwd}, #{name}, #{birthday}, #{zipcode}, #{addrload}, #{addrdetail}, #{mobile}, #{filename})
+	</insert>
+
+	<delete id="delete">
+		delete from member
+		where mid = #{mid}
+	</delete>	
+	
 	<update id="update">
 		update member
 		set
+			name = #{name},
 			birthday = #{birthday},
 			mobile = #{mobile},
 			email = #{email},
@@ -16,10 +29,7 @@
 			addrdetail = #{addrdetail}
 		where mid = #{mid}
 	</update>
-	<!-- <select id="selectOne" resultType="Member">
-		select *  from member
-		where mid = #{mid}
-	</select> -->
+	
 
 	<update id="pwupdate">
 		update member
@@ -48,7 +58,6 @@
 	<select id="selectTotalCnt" resultType="int">
 		select count(*) totalCnt from member
 		where m_removeyn = 'n' 
-		<include refid="find"/>
 	</select>
 	
 	<sql id="find">
@@ -63,15 +72,7 @@
 		</if>		
 	</sql>
 	
-	<insert id="insert">
-		insert into member(mid, email, passwd, name, zipcode, addrload, addrdetail,mobile,filename)
-		values(#{mid}, #{email}, #{passwd}, #{name}, #{zipcode}, #{addrload}, #{addrdetail}, #{mobile}, #{filename})
-	</insert>
-
-<!-- 	<select id="selectOne" resultType="Member">
-		select *  from member
-		where mid = #{mid}
-	</select> -->
+	
 	
 	
 	

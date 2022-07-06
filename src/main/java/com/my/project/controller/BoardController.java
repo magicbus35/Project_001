@@ -194,13 +194,15 @@ public class BoardController {
 	
 	//수정폼으로 이동
 	@GetMapping("noticeModify")
-	public void noticeModify(@RequestParam int nnum, Model model) {
-		//1)게시물 조회
-		model.addAttribute("notice", noticeService.selectOne(nnum));
-		//2)게시물파일들 조회
-		model.addAttribute("nflist", noticeFileService.selectList(nnum));
-		
-		//board/noticeModify.jsp로 이동
+	public void noticeModify(@RequestParam int nnum, Model model, HttpSession session) {
+		String curMcode = (String) session.getAttribute("mcode");
+		if (curMcode.equals('0')) {
+			//1)게시물 조회
+			model.addAttribute("notice", noticeService.selectOne(nnum));
+			//2)게시물파일들 조회
+			model.addAttribute("nflist", noticeFileService.selectList(nnum));
+			//board/noticeModify.jsp로 이동
+		}
 	}
 	
 	//수정버튼을 클릭했을때 
@@ -222,11 +224,14 @@ public class BoardController {
 	
 	//삭제버튼클릭시
 	@GetMapping("noticeRemove")
-	public String noticeRemove(@RequestParam int nnum, RedirectAttributes rattr) {
-		ErrorCode errorCode = noticeService.updateRemoveyn(nnum);
-		
-		//redirect, list로 이동
-		rattr.addFlashAttribute("msg", errorCode.getMsg());
+	public String noticeRemove(@RequestParam int nnum, RedirectAttributes rattr, HttpSession session) {
+		String curMcode = (String) session.getAttribute("mcode");
+		if (curMcode.equals('0')) {
+			ErrorCode errorCode = noticeService.updateRemoveyn(nnum);
+			//redirect, list로 이동
+			rattr.addFlashAttribute("msg", errorCode.getMsg());
+			return "redirect:list";
+		}
 		return "redirect:list";
 		
 	}

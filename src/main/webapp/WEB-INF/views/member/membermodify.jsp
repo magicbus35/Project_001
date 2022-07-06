@@ -99,9 +99,9 @@
 			</tr>
 			<tr>
 				<th>부서</th>
-				<td><input type="text"  id="teamname"  name="mod_teamname" value="${member.teamname}"></td>
+				<td><input type="text"  id="mod_teamname"  name="teamname" value="${member.teamname}"></td>
 				<th>직급</th>
-				<td><input type="text"  id="gradename" name="mod_gradename" value="${member.gradename}"></td>
+				<td><input type="text"  id="mod_gradename" name="gradename" value="${member.gradename}"></td>
 			</tr>
 			</table>
 		</div>

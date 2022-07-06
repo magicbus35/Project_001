@@ -103,13 +103,13 @@ public class  MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public ErrorCode pwupdate(Member member, String newPasswd) {
+	public ErrorCode pwupdate(Member member, String oldPasswd, String newPasswd) {
 		
-		Member dbmember = memberRepository.selectOne(member.getEmail());
+		Member dbmember = memberRepository.selectOne(member.getMid());
 
 		//1)기존 비밀번호
 		//평문과 암호문을 비교(평문, 암호문)
-		boolean match = bCryptPasswordEncoder.matches(member.getPasswd(), dbmember.getPasswd());
+		boolean match = bCryptPasswordEncoder.matches(oldPasswd, dbmember.getPasswd());
 		if (!match) {
 			return ErrorCode.ERROR_LOGIN_PASSWD;
 		}

@@ -17,5 +17,6 @@ public interface MemberRepository {
 	List<Member> selectList(M_Page m_page); //page는 페이징처리위한 정보
 	//전체게시물수 구하기
 	int selectTotalCnt(M_Page m_page);
+	int delete(String mid);
 	
 }
