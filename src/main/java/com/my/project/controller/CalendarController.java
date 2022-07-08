@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,7 +53,7 @@ public class CalendarController {
 			hashmap.put("title", cal.getTitle());
 			hashmap.put("start", cal.getStart());
 			hashmap.put("end", cal.getEnd());
-			hashmap.put("allDay", false);
+			hashmap.put("allDay", true); 
 			
 	        jsonObj = new JSONObject(hashmap);
 	        jsonArr.add(jsonObj);
@@ -77,7 +79,7 @@ public class CalendarController {
 
 	}
 	
-	  //@ResponseBody 
+	  @ResponseBody 
 	  @DeleteMapping("/{title}")
 	  public String caldelete(@PathVariable String title) throws Exception {
 		  

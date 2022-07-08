@@ -38,7 +38,7 @@
 	<!-- new String("C:\\Users\\user\\Desktop\\두루미\\savedir"); -->
 	<bean id="savedir" class="java.lang.String">
 		<constructor-arg value="${file.savedir}"/>
-	</bean>
+	</bean> 
 	
 	<!-- 암호화 객체 -->
 	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

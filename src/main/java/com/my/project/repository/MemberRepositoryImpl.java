@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.my.project.advice.ErrorCode;
 import com.my.project.dto.M_Page;
 import com.my.project.dto.Member;
 
@@ -14,6 +15,7 @@ public class MemberRepositoryImpl implements MemberRepository{
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
 
 	@Override
 	public int insert(Member member) {

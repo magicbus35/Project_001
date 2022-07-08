@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +94,6 @@ public class  MemberServiceImpl implements MemberService{
 
 	@Override
 	public ErrorCode update(Member member) throws Exception {
-		
 		MultipartFile photofile = member.getPhotofile();
 		String filename = fileService.fileUpload(photofile);
 		if (!filename.equals("")) member.setFilename(filename);
@@ -161,6 +162,18 @@ public class  MemberServiceImpl implements MemberService{
 	public Member selectOne(String mid) {
 		
 		return memberRepository.selectOne(mid);
+	}
+
+
+	@Override
+	public ErrorCode delete(String mid, HttpSession session) {
+		String mcode = (String) session.getAttribute("mcode");
+		if(mcode.equals("0")) {
+			memberRepository.delete(mid);
+			return ErrorCode.SUCCESS_REMOVE;
+		}else {
+			return ErrorCode.ERROR_ACCESS_DENIED;
+		}
 	}
 
 }

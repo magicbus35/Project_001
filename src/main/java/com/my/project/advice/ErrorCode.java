@@ -19,7 +19,8 @@ public enum ErrorCode {
 	SUCCESS_NAVER_JOIN(0, "간편가입이 완료 되었습니다."),
 	ERROR_NAVERAUTH(1, "네이버 인증이 유효하지 않습니다.!"),
 	ERROR_EMAIL_EXIST(1, "이메일이 존재합니다.!"),
-	SUCCESS_EMAIL_NOEXIST(0, "사용가능한 이메일 입니다.!");
+	SUCCESS_EMAIL_NOEXIST(0, "사용가능한 이메일 입니다.!"),
+	ERROR_ACCESS_DENIED(1, "권한이 없습니다!");
 	
 
 	

@@ -15,7 +15,7 @@ public class Member {
 	private String addrdetail;
 	private String mobile;
 	private String tcode;
-	private int gcode;
+	private String gcode;
 	private String mcode;
 	private Date regidate;
 	private Date modidate;
@@ -128,12 +128,12 @@ public class Member {
 	}
 
 
-	public int getGcode() {
+	public String getGcode() {
 		return gcode;
 	}
 
 
-	public void setGcode(int gcode) {
+	public void setGcode(String gcode) {
 		this.gcode = gcode;
 	}
 
@@ -226,6 +226,9 @@ public class Member {
 				+ regidate + ", modidate=" + modidate + ", filename=" + filename + ", m_removeyn=" + m_removeyn
 				+ ", teamname=" + teamname + ", gradename=" + gradename + ", photofile=" + photofile + "]";
 	}
+
+
+	
 
 	
 }

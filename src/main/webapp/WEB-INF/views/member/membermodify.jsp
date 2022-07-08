@@ -38,6 +38,7 @@
 </head>
 
 <body>
+<%@ include file="../header.jsp" %>
 		<div>
 			<h2>개인정보수정</h2>
 		</div>
@@ -45,6 +46,7 @@
 	<div class="container">
    		 <button id="buttonid"  type= "button" onclick = "location.href='${path}/member/newpasswd?mid=${member.mid}'" style="float:right" class="btn-gradient blue small lalala"> 비밀번호변경 </button>
    		 <button id="buttonid" type="button" onclick="modifyCheck(event)" style="float:right" class="btn-gradient blue small"> 저장 </button>
+   		 <button id="buttonid" type="button" onclick="location.href='${path}/member/memberdelete?mid=${member.mid}'" style="float:right" class="btn-gradient blue small"> 삭제 </button>
 	</div>
 	
 	<form name = "membermodify" id= "membermodify" action="${path}/member/membermodify" method="post" enctype="multipart/form-data">
@@ -93,15 +95,31 @@
 			<table border="1" id="divInfo">
 			<tr>
 				<th>아이디</th>
-				<td><input type="text"  name ="mid" id="mod_mid" value="${member.mid}"></td>
+				<td><input type="text"  name ="mid" id="mod_mid" value="${member.mid}" readonly></td>
 				<th>입사일</th>
 				<td><fmt:formatDate value="${member.regidate}" pattern="yyyy-MM-dd"/> </td>
 			</tr>
 			<tr>
 				<th>부서</th>
-				<td><input type="text"  id="mod_teamname"  name="teamname" value="${member.teamname}"></td>
+				<td>
+					<select name="tcode" id="mod_teamname">
+						<option value="1">대표이사</option>
+						<option value="2">경영팀</option>
+						<option value="3">인사팀</option>
+						<option value="4">개발팀</option>
+					</select>
+				</td>
 				<th>직급</th>
-				<td><input type="text"  id="mod_gradename" name="gradename" value="${member.gradename}"></td>
+				<td>
+					<%-- <input type="hidden"  name="gcode" value="${member.gcode}">
+					<input type="text"  id="mod_gradename" value="${member.gradename}"> --%>
+					<select name="gcode" id="mod_gradename">
+						<option value="1">전무이사</option>
+						<option value="2">팀장</option>
+						<option value="3">과장</option>
+						<option value="4">대리</option>
+					</select>
+				</td>
 			</tr>
 			</table>
 		</div>

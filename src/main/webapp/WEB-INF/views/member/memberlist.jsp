@@ -32,9 +32,11 @@
 
 
 </head>
+
 <body >
+<%@ include file="../header.jsp" %>
     <div class="container">
-        <h3>조직도 리스트</h3>
+        <h3>사원조회</h3>
     </div>
     
     <div id="board-search">
@@ -61,9 +63,9 @@
             <table class="board-table">
                 <thead>
 	                <tr>
-	                    <th scope="col" class="th-num">부서</th>
+	                    <th scope="col" class="th-num" style="width: 160px;">부서</th>
 	                    <th scope="col" class="th-title">직급</th>
-	                    <th scope="col" class="th-date">성명</th>
+	                    <th scope="col" class="th-date" style="width:160px;">성명</th>
 	                </tr>
                 </thead>
                 <tbody>
@@ -79,9 +81,21 @@
                 </tbody>
             </table>
         </div>
+        <div id=divPaging>
+			<div><c:if test="${m_page.startPage != 1}">
+				<a href="${path}/member/memberlist?curPage=${m_page.startPage-1}">◀</a></c:if>
+			</div>
+			<div><c:forEach var="i" begin="${m_page.startPage}" end="${m_page.endPage}">
+				<a href="${path}/member/memberlist?curPage=${i}">${i}</a></c:forEach>
+			</div>	
+			<div><c:if test="${m_page.endPage<m_page.totPage}">	
+				<a href="${path}/member/memberlist?curPage=${m_page.endPage+1}">▶</a></c:if>
+			</div>
+			
+		</div>
     </div>
 	
-	<hr>
+	<%-- <hr>
 	<c:if test="${m_page.startPage != 1}">
 		<a href="${path}/member/memberlist?curPage=${m_page.startPage-1}">이전</a>
 	</c:if>
@@ -92,8 +106,9 @@
 
 	<c:if test="${m_page.endPage<m_page.totPage}">
 		<a href="${path}/member/memberlist?curPage=${m_page.endPage+1}">다음</a>
-	</c:if>
+	</c:if> --%>
 	
 	
 </body>
+<%@include file="../footer.jsp" %>
 </html>

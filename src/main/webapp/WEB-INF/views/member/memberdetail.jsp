@@ -45,6 +45,7 @@
 </style> 
 </head>
 <body>
+<%@ include file="../header.jsp" %>
 	
 	<div class="">
 		<h2>개인정보조회</h2>

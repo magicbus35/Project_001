@@ -2,6 +2,7 @@ package com.my.project.repository;
 
 import java.util.List;
 
+import com.my.project.advice.ErrorCode;
 import com.my.project.dto.M_Page;
 import com.my.project.dto.Member;
 

@@ -351,6 +351,7 @@ select.filter {
   </div>
   <script>
   (function(){
+	  const context = 
     $(function(){
       // calendar element 취득
       var calendarEl = $('#calendar')[0];
@@ -369,17 +370,14 @@ select.filter {
         },
         initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
         /* initialDate: '2022-06-06', */ // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-        navLinks: false, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
-        editable: true, // 수정 가능?
+        navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+        editable: false, // 수정 가능?
         selectable: true, // 달력 일자 드래그 설정가능
-        nowIndicator: true,  // 현재 시간 마크
+        nowIndicator: false,  // 현재 시간 마크
         dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
         locale: 'ko', // 한국어 설정
         eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트	
 
-          console.log(obj);
-        },
-        eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트	
           console.log(obj);
         },
         eventRemove: function(obj) { // 이벤트가 수정되면 발생하는 이벤트	
@@ -404,7 +402,7 @@ select.filter {
               
               //서버로 전송
 
-      		fetch('/project/drag', {
+      		fetch(`${path}/drag`, {
       			method : 'post',
       			headers : {
       				'Content-Type' : "application/json; charset=utf-8"
@@ -427,15 +425,17 @@ select.filter {
           },
         
           eventClick : function(arg) {
-              //  console.log(arg.event.extendedProps); {num : 값}
-              //  console.log(arg.event.extendedProps.num); 값
+			
              
                   if (confirm('삭제하시겠습니까?')) {
-					const title = arg.target.value;
-                  	 	arg.event.remove(title);
-                  	 	console.log(title);
+					
+						const title= arg.event.title;
+						console.log(arg.event.title);
+                  	 	arg.event.remove();
+
+                  	
                   	 	
-                  	 	fetch('/project/${title}',{
+                   	 	fetch(`${path}/`+title,{
                   	 		method: 'delete',
                   	 	})
                   	 	.then(res=>res.text())			
@@ -443,29 +443,31 @@ select.filter {
                   	 		console.log(text);
                   	 	})
                   	 	.catch(console.error);
+                  	 	
+/*         	               $.ajax({
+                               type:"DELETE",
+                                url:'${path}/remove/{title}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                // num 값 넘겨줘야함
+                               data : JSON.stringify(event),
+                               success : function(result) {
+                                   console.log("삭제완료");
+                                  
+                                 
+                               }
+                                /* error : console.err,  */
+                           
                   	
-                  }
-  /*      	               $.ajax({
-                          type:"DELETE",
-                          url:'/project/remove',
-                           contentType: "application/json; charset=utf-8",
-                           dataType: "json",
-                           // num 값 넘겨줘야함
-                          data : JSON.stringify(event),
-                          success : function(result) {
-                              console.log("삭제완료");
-                             
-                            
-                          }
-                           error : console.err, 
-                      })  */
+                  } 
+    
                   
               },
             
         
         // 이벤트 
          events: (info, success, error)=>{  
-    		fetch('/project/caldata')
+    		fetch(`${path}/caldata`)
     		.then(res=>res.json())
     		.then(data=>{
     			success(data);

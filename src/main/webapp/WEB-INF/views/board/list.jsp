@@ -80,20 +80,21 @@
             <i id="boardAdd" onclick="location.href='${path}/board/boardAdd'" class="fa-solid fa-pencil fa-pull-right fa-border">글쓰기</i>
 			<i id="noticeAdd" onclick="location.href='${path}/board/noticeAdd'" class="fa-solid fa-bullhorn fa-pull-right fa-border manager">공지하기</i>
         </div>
-                    <div id=divPaging>
-				<div><c:if test="${b_page.startPage != 1}">
-					<a href="${path}/board/list?curPage=${b_page.startPage-1}">◀</a></c:if>
-				</div>
-				<div><c:forEach var="i" begin="${b_page.startPage}" end="${b_page.endPage}">
-					<a href="${path}/board/list?curPage=${i}">${i}</a></c:forEach>
-				</div>	
-				<div><c:if test="${b_page.endPage<b_page.totPage}">	
-					<a href="${path}/board/list?curPage=${b_page.endPage+1}">▶</a></c:if>
-				</div>
-				<%@include file="../footer.jsp" %>
+       	<div id=divPaging>
+			<div><c:if test="${b_page.startPage != 1}">
+				<a href="${path}/board/list?curPage=${b_page.startPage-1}">◀</a></c:if>
 			</div>
+			<div><c:forEach var="i" begin="${b_page.startPage}" end="${b_page.endPage}">
+				<a href="${path}/board/list?curPage=${i}">${i}</a></c:forEach>
+			</div>	
+			<div><c:if test="${b_page.endPage<b_page.totPage}">	
+				<a href="${path}/board/list?curPage=${b_page.endPage+1}">▶</a></c:if>
+			</div>
+			
+		</div>
     </div>
 </section>
 
 </body>
+<%@include file="../footer.jsp" %>
 </html>

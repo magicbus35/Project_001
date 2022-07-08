@@ -10,7 +10,7 @@
 <script type="text/javascript" src="${path}/resources/js/memberJoin.js"></script>
 </head>
 <body>
-${member}
+<%@ include file="../header.jsp" %>
  	<form name="pwModify" id="pwModify" action="${path}/member/newpasswd" method="post" >
  	<div class = "change_pw">
  		<h2>비밀번호 변경</h2>

@@ -3,6 +3,8 @@ package com.my.project.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.my.project.advice.ErrorCode;
 import com.my.project.dto.M_Page;
 import com.my.project.dto.Member;
@@ -20,7 +22,7 @@ public interface MemberService {
 	List<Member> selectList(M_Page m_page);
 	
 	Member selectOne(String mid);
-
-
+	
+	ErrorCode delete(String mid, HttpSession session);
 
 }

@@ -2,6 +2,7 @@ package com.my.project.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -113,19 +114,30 @@ public class MemberController {
 	  }
 	  
 
-	@PostMapping("newpasswd")
-	public String newpasswd(Member member, String mid, String oldPasswd, String newPasswd, Model model,RedirectAttributes rattr) {
-		member = memberService.selectOne(mid);
-		ErrorCode errorCode = memberService.pwupdate(member, oldPasswd, newPasswd);
-		if (errorCode.getCode() != 0) { //실패시
-			model.addAttribute("msg", errorCode.getMsg());
-			return "member/newpasswd";
-		}else { //성공시 info
-			rattr.addFlashAttribute("msg", errorCode.getMsg());
-			rattr.addAttribute("mid", member.getMid());
-			return "redirect:/member/memberdetail";
-		}
-
-	}
+	  @PostMapping("newpasswd")
+	  public String newpasswd(Member member, String mid, String oldPasswd, String newPasswd, Model model,RedirectAttributes rattr) {
+		  member = memberService.selectOne(mid);
+		  ErrorCode errorCode = memberService.pwupdate(member, oldPasswd, newPasswd);
+		  if (errorCode.getCode() != 0) { //실패시
+			  model.addAttribute("msg", errorCode.getMsg());
+			  return "member/newpasswd";
+		  }else { //성공시 info
+			  rattr.addFlashAttribute("msg", errorCode.getMsg());
+			  rattr.addAttribute("mid", member.getMid());
+			  return "redirect:/member/memberdetail";
+		  }
+	
+	  }
+	  @GetMapping("memberdelete")
+	  public String memberdelete(String mid, HttpSession session, Model model) {
+		  ErrorCode errorCode = memberService.delete(mid, session);
+		  if (errorCode.getCode() != 0) { //실패시
+			  model.addAttribute("msg", errorCode.getMsg());
+			  return "/";
+		  }else { //성공시 info
+			  return "/member/memberlist";
+		  }
+		  
+	  }
 	
 }

@@ -65,31 +65,16 @@ function goPopup(path){
 }
 
 $(document).ready(function(){
-	$("#mod_mid").attr("readonly",true);
-	
-	
-	/*if($("#gcode").val() == 1){
-		$("#mod_mid").removeattr("readonly");	
-		$("#mod_mid").css("background-color",'#eaedf1');
-	}*/	
-});
-
-$(document).ready(function(){
-	$("#mod_teamname").attr("readonly", true);
-	/*if($("#gcode").val() == 1){
-		$("#mod_teamname").removeattr("readonly");	
-		$("#mod_mid").css("background-color",'#eaedf1');
-	}*/	
-	
-});
-
-
-$(document).ready(function(){
-	$("#mod_gradename").attr("readonly", true);
-	/*if($("#gcode").val() == 1){
-		$("#mod_gradename").removeattr("readonly");	
-		$("#mod_mid").css("background-color",'#eaedf1');
-	}*/	
+	const sessionMcode = $("#sessionMcode").val();
+	if(sessionMcode=='0'){
+		
+		$("#mod_teamname").removeattr("disabled");	
+		$("#mod_gradename").removeattr("disabled");
+	}else{
+		
+		$("#mod_teamname").attr("disabled", "disabled");
+		$("#mod_gradename").attr("disabled", "disabled");
+	}
 });
 
 
@@ -133,11 +118,11 @@ function modifyCheck(e){
 			email.focus();
 			return;
 		}
-		if(addrload.value == ''){
+		/*if(addrload.value == ''){
 			alert('필수입력 값입니다.');
 			addrload.focus();
 			return;
-		}
+		}*/
 		
 	
 	

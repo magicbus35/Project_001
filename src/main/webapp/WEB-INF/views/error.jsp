@@ -19,4 +19,5 @@
 	</ul>
 	
 </body>
+<%@include file="footer.jsp" %>
 </html>
