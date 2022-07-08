@@ -10,17 +10,18 @@ window.addEventListener('load', ()=>{
 	//세션mid과 작성자mid이 같은지 체크(같을때만 버튼을 리턴)
 	Handlebars.registerHelper('sessionCheck', function(mid, rnum, content){
 		//console.log(mid);
+		
 		var curMid = $('#curMid').text();
 		console.log(content);
 		//console.log(curMid);
 		if (content == ''){
 			return '<pre>삭제된 댓글입니다</pre> <br>';
-		}else if (content != '' && curMid == mid){
+		}else if ((content != '' && curMid == mid)  || sessionMcode == '0'){
 			return '<pre id="content'+rnum+'">'+content+'</pre> <br>'+
 					'<button class="reReplyModify" value="'+ rnum +'">수정</button>'+' '+
 					'<button class="reReplyRemove" value="'+ rnum +'">삭제</button>';
 		}else if (content != '' && curMid != mid){
-			return '<pre id="content"' +rnum+'>'+content+'</pre> <br>';
+			return '<pre id="content' +rnum+'">'+content+'</pre> <br>';
 		}
 	});
 	

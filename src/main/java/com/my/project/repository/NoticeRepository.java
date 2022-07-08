@@ -13,10 +13,6 @@ public interface NoticeRepository {
 	
 	//조회수+1
 	int updateReadCnt(int nnum);
-	//좋아요+1
-	int updateLikeCnt(int nnum);
-	//싫어요 + 1
-	int updateDisLikeCnt(int nnum);
 	
 	//삭제여부변경
 	int updateRemoveyn(int nnum);

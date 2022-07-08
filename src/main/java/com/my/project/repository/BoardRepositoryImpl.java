@@ -61,16 +61,5 @@ public class BoardRepositoryImpl implements BoardRepository{
 		return sqlSession.update("com.my.project.BoardMapper.updateRemoveyn", bnum);
 	}
 
-	@Override
-	public int updateLikeCnt(int bnum) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("com.my.project.BoardMapper.updateLikeCnt", bnum);
-	}
-
-	@Override
-	public int updateDisLikeCnt(int bnum) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("com.my.project.BoardMapper.updateDisLikeCnt", bnum);
-	}
 
 }

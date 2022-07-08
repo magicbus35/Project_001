@@ -16,8 +16,4 @@ public interface BoardService {
 	
 	//조회수+1
 	int updateReadCnt(int bnum);
-	//좋아요+1
-	int updateLikeCnt(int bnum);
-	//싫어요+1
-	int updateDisLikeCnt(int bnum);
 }

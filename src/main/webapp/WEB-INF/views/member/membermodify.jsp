@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/includeFile.jsp" %> 
+<%@ include file="../include/sessionCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
       	style="background-color:skyblue;"
     }
 
-    #buttonid{
+    .buttonid{
         width:120px;
         margin:auto;
         display:block;
@@ -33,26 +34,27 @@
 	.container_a {
 		 width: 800px;
  		 margin: 0 auto;
-	}
 </style>
 </head>
 
 <body>
-<%@ include file="../header.jsp" %>
+<div class="container" style="width: 1070px;">
+	<%@include file="../header.jsp"%>
+</div>
 		<div>
 			<h2>개인정보수정</h2>
 		</div>
 		
 	<div class="container">
-   		 <button id="buttonid"  type= "button" onclick = "location.href='${path}/member/newpasswd?mid=${member.mid}'" style="float:right" class="btn-gradient blue small lalala"> 비밀번호변경 </button>
-   		 <button id="buttonid" type="button" onclick="modifyCheck(event)" style="float:right" class="btn-gradient blue small"> 저장 </button>
-   		 <button id="buttonid" type="button" onclick="location.href='${path}/member/memberdelete?mid=${member.mid}'" style="float:right" class="btn-gradient blue small"> 삭제 </button>
+   		 <button class="buttonid" id="mchangepasswd" type= "button" onclick = "location.href='${path}/member/newpasswd?mid=${member.mid}'" style="float:right" class="btn-gradient blue small lalala"> 비밀번호변경 </button>
+   		 <button class="buttonid" id="msave" type="button" onclick="modifyCheck(event)" style="float:right" class="btn-gradient blue small"> 저장 </button>
+   		 <button class="buttonid" id="mdelete" type="button" onclick="location.href='${path}/member/memberdelete?mid=${member.mid}'" style="float:right" class="btn-gradient blue small"> 삭제 </button>
 	</div>
 	
 	<form name = "membermodify" id= "membermodify" action="${path}/member/membermodify" method="post" enctype="multipart/form-data">
 	
 
-	<hr>
+	<hr style="width: 1070px;">
 	
 	<div class="container_a">
 		<h4>개인정보</h4>
@@ -87,8 +89,8 @@
 			</tr>
 			</table>
 		</div>
-		<hr>
-		<div id="divInfo">
+		<hr style="width: 1070px;">
+		<div class="container_a">
 			<h4>사원정보</h4>
 		</div>
 		<div id="divInfo">
@@ -111,8 +113,7 @@
 				</td>
 				<th>직급</th>
 				<td>
-					<%-- <input type="hidden"  name="gcode" value="${member.gcode}">
-					<input type="text"  id="mod_gradename" value="${member.gradename}"> --%>
+					
 					<select name="gcode" id="mod_gradename">
 						<option value="1">전무이사</option>
 						<option value="2">팀장</option>

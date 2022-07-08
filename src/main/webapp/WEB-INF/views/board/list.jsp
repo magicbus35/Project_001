@@ -9,8 +9,10 @@
 <link rel="stylesheet" href="${path}/resources/css/style.css"/>
 <link rel="stylesheet" href="${path}/resources/css/style_board.css" type="text/css" />
 </head>
-<%@ include file="../header.jsp" %>
 <body>
+<div class="container">
+	<%@include file="../header.jsp"%>
+</div>
 <section class="board">
  	<div class="page-title">
        	<div class="container">

@@ -12,7 +12,9 @@
 <script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<div class="container">
+	<%@include file="../header.jsp"%>
+</div>
 	<form action="${path}/board/boardAdd" method="post" enctype="multipart/form-data" id="frm" >
 		<div class="divide">
 			<table class="board_view">

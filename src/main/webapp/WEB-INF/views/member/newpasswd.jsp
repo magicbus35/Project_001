@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/includeFile.jsp" %>     
+<%@ include file="../include/includeFile.jsp" %>
+<%@ include file="../include/sessionCheck.jsp" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,9 @@
 <script type="text/javascript" src="${path}/resources/js/memberJoin.js"></script>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<div class="container" style="width: 1070px;">
+	<%@include file="../header.jsp"%>
+</div>
  	<form name="pwModify" id="pwModify" action="${path}/member/newpasswd" method="post" >
  	<div class = "change_pw">
  		<h2>비밀번호 변경</h2>

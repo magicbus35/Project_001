@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/includeFile.jsp" %> 
-<%--  <%@ include file="../include/sessionCheck.jsp" %> --%>  
+<%@ include file="../include/sessionCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +34,9 @@
 </head>
 
 <body >
-<%@ include file="../header.jsp" %>
+<div class="container" style="width: 1070px;">
+	<%@include file="../header.jsp"%>
+</div>
     <div class="container">
         <h3>사원조회</h3>
     </div>
@@ -56,7 +58,6 @@
             </div>
         </div>
     </div>
-    <hr>
     
     <div id="board-list">
         <div class="container">
@@ -95,18 +96,6 @@
 		</div>
     </div>
 	
-	<%-- <hr>
-	<c:if test="${m_page.startPage != 1}">
-		<a href="${path}/member/memberlist?curPage=${m_page.startPage-1}">이전</a>
-	</c:if>
-	
-	<c:forEach var="i" begin="${m_page.startPage}" end="${m_page.endPage}">
-		<a href="${path}/member/memberlist?curPage=${i}">${i}</a> 
-	</c:forEach>
-
-	<c:if test="${m_page.endPage<m_page.totPage}">
-		<a href="${path}/member/memberlist?curPage=${m_page.endPage+1}">다음</a>
-	</c:if> --%>
 	
 	
 </body>

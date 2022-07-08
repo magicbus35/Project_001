@@ -10,7 +10,8 @@ public interface MemberRepository {
 
 	int insert(Member member);
 	Member selectOne(String mid);
-
+	
+	int mupdate(Member member);
 	int update(Member member);
 	int pwupdate(Member member);
 	

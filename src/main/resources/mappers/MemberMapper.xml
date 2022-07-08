@@ -17,7 +17,7 @@
 		where mid = #{mid}
 	</delete>	
 	
-	<update id="update">
+	<update id="mupdate">
 		update member
 		set
 			name = #{name},
@@ -29,6 +29,19 @@
 			addrdetail = #{addrdetail},
 			tcode = #{tcode},
 			gcode = #{gcode}
+		where mid = #{mid}
+	</update>
+	
+	<update id="update">
+		update member
+		set
+			name = #{name},
+			birthday = #{birthday},
+			mobile = #{mobile},
+			email = #{email},
+			addrload = #{addrload},
+			filename = #{filename},
+			addrdetail = #{addrdetail}
 		where mid = #{mid}
 	</update>
 	

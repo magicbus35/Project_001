@@ -93,6 +93,17 @@ public class  MemberServiceImpl implements MemberService{
 
 
 	@Override
+	public ErrorCode mupdate(Member member) throws Exception {
+		MultipartFile photofile = member.getPhotofile();
+		String filename = fileService.fileUpload(photofile);
+		if (!filename.equals("")) member.setFilename(filename);
+		
+		
+		memberRepository.mupdate(member);
+		return ErrorCode.SUCCESS_MODIFY;
+	}
+	
+	@Override
 	public ErrorCode update(Member member) throws Exception {
 		MultipartFile photofile = member.getPhotofile();
 		String filename = fileService.fileUpload(photofile);

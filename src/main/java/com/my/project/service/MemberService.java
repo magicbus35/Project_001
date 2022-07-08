@@ -15,6 +15,8 @@ public interface MemberService {
 
 	Map<String, Object> insert(Member member);
 	
+	ErrorCode mupdate(Member member) throws Exception;
+	
 	ErrorCode update(Member member) throws Exception;
 
 	ErrorCode pwupdate(Member member, String newPasswd, String newPasswd2) ;

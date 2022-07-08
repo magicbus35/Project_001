@@ -54,16 +54,5 @@ public class NoticeRepositoryImpl implements NoticeRepository{
 		return sqlSession.update("com.my.project.NoticeMapper.updateRemoveyn", nnum);
 	}
 
-	@Override
-	public int updateLikeCnt(int nnum) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("com.my.project.NoticeMapper.updateLikeCnt", nnum);
-	}
-
-	@Override
-	public int updateDisLikeCnt(int nnum) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("com.my.project.NoticeMapper.updateDisLikeCnt", nnum);
-	}
 
 }

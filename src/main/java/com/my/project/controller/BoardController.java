@@ -110,13 +110,21 @@ public class BoardController {
 	
 	//수정폼으로 이동
 	@GetMapping("boardModify")
-	public void boardModify(@RequestParam int bnum, Model model) {
-		//1)게시물 조회
-		model.addAttribute("board", boardService.selectOne(bnum));
-		//2)게시물파일들 조회
-		model.addAttribute("bflist", boardFileService.selectList(bnum));
-		
-		//board/boardModify.jsp로 이동
+	public String boardModify(Board board, @RequestParam int bnum, Model model, HttpSession session, RedirectAttributes rattr) {
+		board = boardService.selectOne(bnum);
+		String boardMid = board.getMid();
+		String curMid = (String) session.getAttribute("mid");
+		String curMcode = (String) session.getAttribute("mcode");
+		if (boardMid.equals(curMid) || curMcode.equals("0")) {
+			//1)게시물 조회
+			model.addAttribute("board", boardService.selectOne(bnum));
+			//2)게시물파일들 조회
+			model.addAttribute("bflist", boardFileService.selectList(bnum));
+			//board/boardModify.jsp로 이동
+			return "/board/boardModify";
+		}else {
+			return "redirect:/";
+		}
 	}
 	
 	//수정버튼을 클릭했을때 
@@ -138,13 +146,19 @@ public class BoardController {
 	
 	//삭제버튼클릭시
 	@GetMapping("boardRemove")
-	public String boardRemove(@RequestParam int bnum, RedirectAttributes rattr) {
-		ErrorCode errorCode = boardService.updateRemoveyn(bnum);
-		
-		//redirect, list로 이동
-		rattr.addFlashAttribute("msg", errorCode.getMsg());
-		return "redirect:list";
-		
+	public String boardRemove(Board board, @RequestParam int bnum, RedirectAttributes rattr, HttpSession session) {
+		board = boardService.selectOne(bnum);
+		String boardMid = board.getMid();
+		String curMid = (String) session.getAttribute("mid");
+		String curMcode = (String) session.getAttribute("mcode");
+		if (boardMid.equals(curMid) || curMcode.equals("0")) {
+			ErrorCode errorCode = boardService.updateRemoveyn(bnum);
+			
+			//redirect, list로 이동
+			rattr.addFlashAttribute("msg", errorCode.getMsg());
+			return "redirect:list";
+		}
+		return "redirect:/";
 	}
 	
 	
@@ -169,10 +183,10 @@ public class BoardController {
 	@GetMapping("noticeAdd")
 	public void noticeAdd(HttpSession session, Model model) {
 		String curMcode = (String) session.getAttribute("mcode");
-		if (curMcode.equals('0')) {
+		if (curMcode.equals("0")) {
 			//추가페이지이동
-			String email = (String) session.getAttribute("email");
-			Member member = memberService.selectOne(email);
+			String mid = (String) session.getAttribute("mid");
+			Member member = memberService.selectOne(mid);
 			model.addAttribute("member", member);
 		}
 		
@@ -196,7 +210,7 @@ public class BoardController {
 	@GetMapping("noticeModify")
 	public void noticeModify(@RequestParam int nnum, Model model, HttpSession session) {
 		String curMcode = (String) session.getAttribute("mcode");
-		if (curMcode.equals('0')) {
+		if (curMcode.equals("0")) {
 			//1)게시물 조회
 			model.addAttribute("notice", noticeService.selectOne(nnum));
 			//2)게시물파일들 조회
@@ -226,7 +240,7 @@ public class BoardController {
 	@GetMapping("noticeRemove")
 	public String noticeRemove(@RequestParam int nnum, RedirectAttributes rattr, HttpSession session) {
 		String curMcode = (String) session.getAttribute("mcode");
-		if (curMcode.equals('0')) {
+		if (curMcode.equals("0")) {
 			ErrorCode errorCode = noticeService.updateRemoveyn(nnum);
 			//redirect, list로 이동
 			rattr.addFlashAttribute("msg", errorCode.getMsg());

@@ -124,18 +124,6 @@ public class BoardServiceImpl implements BoardService {
 		boardRepository.updateRemoveyn(bnum);
 		return ErrorCode.SUCCESS_REMOVE;
 	}
-
-	@Override
-	public int updateLikeCnt(int bnum) {
-		// TODO Auto-generated method stub
-		return boardRepository.updateLikeCnt(bnum);
-	}
-
-	@Override
-	public int updateDisLikeCnt(int bnum) {
-		return boardRepository.updateDisLikeCnt(bnum);
-		
-	}
 	
 
 }

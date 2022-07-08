@@ -17,7 +17,6 @@
 	removeButton.type = 'button';
 	removeButton.appendChild(text);
 	
-	
 	//divFiles에 추가하기
 	var divFiles = document.getElementById('divFiles');
 	var div = document.createElement('div');

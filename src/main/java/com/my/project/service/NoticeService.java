@@ -15,8 +15,4 @@ public interface NoticeService {
 	
 	//조회수+1
 	int updateReadCnt(int nnum);
-	//좋아요+1
-	int updateLikeCnt(int nnum);
-	//싫어요+1
-	int updateDisLikeCnt(int nnum);
 }

@@ -93,17 +93,4 @@ public class NoticeServiceImpl implements NoticeService {
 		return ErrorCode.SUCCESS_REMOVE;
 	}
 
-	@Override
-	public int updateLikeCnt(int nnum) {
-		// TODO Auto-generated method stub
-		return noticeRepository.updateLikeCnt(nnum);
-	}
-
-	@Override
-	public int updateDisLikeCnt(int nnum) {
-		return noticeRepository.updateDisLikeCnt(nnum);
-		
-	}
-	
-
 }

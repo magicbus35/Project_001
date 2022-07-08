@@ -7,9 +7,7 @@
 	<meta charset="UTF-8">
 	<title>Welecome to JAVABIN!</title>
 <script type="text/javascript" src="${path}/resources/js/home.js"></script>
-<%-- <link rel="stylesheet" href="${path}/resources/css/jquery.bxslider.css"> --%>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-<%-- <script src="${path}/resources/js/jquery.bxslider.min.js"></script> --%>
+
 <style>
   #wrapper {
       width: 1100px;
@@ -28,12 +26,7 @@
 		        <div><img src="${path}/resources/images/home3.jpg" ></div>
 		    </div>
 		</div>
-<%-- 		    <ul class="slider">
-			     <li><img src="${path}/resources/images/home1.jpg"></li>
-			     <li><img src="${path}/resources/images/home2.jpg"></li>
-			     <li><img src="${path}/resources/images/home3.jpg"></li>
-			</ul> --%>
-		    
+	    
 	</div>
 	<%@include file="footer.jsp" %>
 </body>

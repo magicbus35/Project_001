@@ -40,7 +40,9 @@
 
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<div class="container">
+	<%@include file="../header.jsp"%>
+</div>
 	<div class="divide">
 		<table class="board_view">
 			<colgroup>

@@ -28,7 +28,12 @@ public class MemberRepositoryImpl implements MemberRepository{
 		
 		return sqlSession.selectOne("com.my.project.MemberMapper.selectOne", mid);
 	}
-
+	
+	@Override
+	public int mupdate(Member member) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("com.my.project.MemberMapper.mupdate", member);
+	}
 
 	@Override
 	public int update(Member member) {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./include/includeFile.jsp"%>
+<%@ include file="./include/sessionCheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -334,24 +335,23 @@ select.filter {
 <body style="padding:30px;">
   <!-- calendar 태그 -->
   
-  <div id='calendar-container'>
+  <div id='calendar-container' style="width: 1070px; margin: 0 auto;">
   
    	<%@ include file="header.jsp" %>
  
-  <h1 style="margin: auto; display: block;">JAVABEAN 직원 근태,일정 관리</h1><br>	
+  <h1 style="text-align: center">JAVABEAN 직원 근태,일정 관리</h1><br>	
 
-  드래그 : 일정등록<br>
-  클릭 : 일정삭제
+  
 
-    <div id='calendar'></div>
+    <div id='calendar' style="padding: 30px"></div>
     <%@include file="footer.jsp" %>
     	
-    <div class="backgroundImg"></div>
+    
     <!-- <input type="button" onclick="saveData()" value="저장" style="width:200px; height: 50pt; margin: auto; display: block;"/> -->
   </div>
   <script>
   (function(){
-	  const context = 
+	  const path = $('#contextpath').val();
     $(function(){
       // calendar element 취득
       var calendarEl = $('#calendar')[0];
@@ -396,12 +396,12 @@ select.filter {
                         start: arg.start,
                         end: arg.end,
                         allday: arg.allday
+                       
                       };
               calendar.addEvent(data);
               console.log(data);
               
               //서버로 전송
-
       		fetch(`${path}/drag`, {
       			method : 'post',
       			headers : {
@@ -420,7 +420,7 @@ select.filter {
       		.catch(console.error);               
             }
             
-            //
+            
             calendar.unselect()
           },
         
@@ -446,7 +446,7 @@ select.filter {
                   	 	
 /*         	               $.ajax({
                                type:"DELETE",
-                                url:'${path}/remove/{title}',
+                                url:'/project/remove/{title}',
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 // num 값 넘겨줘야함

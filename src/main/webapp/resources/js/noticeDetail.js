@@ -13,14 +13,7 @@ $(()=>{
 	//컨택스트 패스
 	const path = $('#contextpath').val();
 	console.log(path);
-	
-	$('#noticeModify').css('display', 'none');
-	$('#noticeRemove').css('display', 'none');
-	
-	if ($('#curMid').text() == $('#noticeMid').text()){
-		$('#noticeModify').css('display', '');
-		$('#noticeRemove').css('display', '');
-	}
+
 	
 	//파일다운로드 버튼을 클릭시
 	$('.iconDownload').click((e)=>{
@@ -30,5 +23,6 @@ $(()=>{
 	});
 
 
+ 
 }); 
  

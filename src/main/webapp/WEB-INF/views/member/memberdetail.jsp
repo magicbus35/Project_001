@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/includeFile.jsp" %> 
-<%-- <%@ include file="../include/sessionCheck.jsp" %>  --%>
+<%@ include file="../include/sessionCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${path}/resources/js/memberJoin.js"></script> 
 <link rel="stylesheet" href="${path}/resources/css/button.css">
 <style type="text/css">
 
@@ -15,13 +16,13 @@
         margin:auto;
     }
 
-    #buttonid{
+    .buttonid{
         width:fit-content;
         margin:auto;
       	style="background-color:skyblue;"
     }
 
-    #buttonid{
+    .buttonid{
         width:120px;
         margin:auto;
         display:block;
@@ -45,20 +46,22 @@
 </style> 
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<div class="container" style="width: 1070px;">
+	<%@include file="../header.jsp"%>
+</div>
 	
 	<div class="">
 		<h2>개인정보조회</h2>
 	</div>
 	
 	<div class="container" >
-		<button id= "buttonid" type= "button" onclick="location.href='${path}/member/memberlist'" style="float:right" class="btn-gradient blue small">리스트</button>
-		<button id= "buttonid" type="button" onclick="location.href='${path}/member/membermodify?mid=${member.mid}'" style="float:right" class="btn-gradient blue small">수정</button>
+		<button class= "buttonid" type= "button" onclick="location.href='${path}/member/memberlist'" style="float:right" class="btn-gradient blue small">리스트</button>
+		<button class= "buttonid" id="mmodify" name="mmodify" type="button" onclick="location.href='${path}/member/membermodify?mid=${member.mid}'" style="float:right" class="btn-gradient blue small">수정</button>
 	</div>
 		
 	
 	
-	<hr>
+	<hr style="width: 1070px;">
 	
 	<div class="container_a">
 		<h4>개인정보</h4>
@@ -96,7 +99,7 @@
 	</div>
 		
 		
-		<hr>
+		<hr style="width: 1070px;">
 		
 		<div class="container_a">
 			<h4>사원정보</h4>
@@ -106,7 +109,7 @@
 			<table border="1" id="divInfo">
 				<tr>
 					<th>아이디</th>
-					<td id="mid">${member.mid}</td>
+					<td id="memberMid" >${member.mid}</td>
 					<th>입사일</th>
 					<td><fmt:formatDate value="${member.regidate}" pattern="yyyy-MM-dd"/></td>
 					

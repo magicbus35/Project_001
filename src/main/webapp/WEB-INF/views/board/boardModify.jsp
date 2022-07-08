@@ -11,7 +11,9 @@
 <script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<div class="container">
+	<%@include file="../header.jsp"%>
+</div>
 	<form id="frm" action="${path}/board/boardModify" method="post" enctype="multipart/form-data">
 		<div class="divide">
 			<table class="board_view">

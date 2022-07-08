@@ -14,13 +14,14 @@ $(()=>{
 	//컨택스트 패스
 	const path = $('#contextpath').val();
 	console.log(path);
+	const sessionMcode = $('#sessionMcode').val();
 	
 	$('#boardModify').css('display', 'none');
 	$('#boardRemove').css('display', 'none');
 	$('#reReplyModify').css('display', 'none');
 	$('#reReplyRemove').css('display', 'none');
 	
-	if ($('#curMid').text() == $('#boardMid').text()){
+	if ($('#curMid').text() == $('#boardMid').text() || sessionMcode == '0'){
 		$('#boardModify').css('display', '');
 		$('#boardRemove').css('display', '');
 	}

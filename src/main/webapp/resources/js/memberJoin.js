@@ -7,13 +7,7 @@ function joinCheck(e){
    const name = document.getElementById('name');
    const birthday = document.getElementById('birthday');	
    const mobile = document.getElementById('mobile');
-  /* console.log(mid.value);
-   console.log(email.value);
-   console.log(passwd.value);
-   console.log(passwdConfirm.value);
-   console.log(name.value);
-   console.log(birthday.value);
-   console.log(mobile.value);*/
+ 
    if (!mid.value){
       alert('아이디를 입력해주세요!');
       mid.focus();
@@ -64,8 +58,15 @@ function goPopup(path){
    var pop = window.open(path + "/member/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
 
+
+
 $(document).ready(function(){
 	const sessionMcode = $("#sessionMcode").val();
+	const sessionMid = $("#sessionMid").val();
+	const memberMid = $("#memberMid").text();
+
+	
+	
 	if(sessionMcode=='0'){
 		
 		$("#mod_teamname").removeattr("disabled");	
@@ -75,7 +76,21 @@ $(document).ready(function(){
 		$("#mod_teamname").attr("disabled", "disabled");
 		$("#mod_gradename").attr("disabled", "disabled");
 	}
+	
+
+	
+	if(memberMid == sessionMid || sessionMcode == '0'){
+		$('#mmodify').css('display', '');
+		
+	}else{
+		$('#mmodify').css('display', 'none');
+	}
+	
+	
 });
+
+
+
 
 
 function jusoCallBack(zipNo,roadAddrPart1,addrDetail){
@@ -118,11 +133,7 @@ function modifyCheck(e){
 			email.focus();
 			return;
 		}
-		/*if(addrload.value == ''){
-			alert('필수입력 값입니다.');
-			addrload.focus();
-			return;
-		}*/
+	
 		
 	
 	

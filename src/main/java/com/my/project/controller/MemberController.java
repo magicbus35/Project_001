@@ -89,8 +89,17 @@ public class MemberController {
 	}
 	
 	@GetMapping("membermodify")
-	public void membermodify(String mid, Model model) {
-		model.addAttribute("member", memberService.selectOne(mid)); 
+	public String membermodify(Member member, String mid, Model model, HttpSession session, RedirectAttributes rattr) {
+		member = memberService.selectOne(mid);
+		String memberMid = member.getMid();
+		String curMid = (String) session.getAttribute("mid");
+		String curMcode = (String) session.getAttribute("mcode");
+		if (memberMid.equals(curMid) || curMcode.equals("0")) {
+			model.addAttribute("member", memberService.selectOne(mid));
+			return "/member/membermodify";
+		}else {
+			return "redirect:/";
+		}
 		
 	}
 	
@@ -98,19 +107,33 @@ public class MemberController {
 	 // 회원 수정 저장
 	  
 	 @PostMapping("membermodify") 
-	 public String membermodify(Member member,RedirectAttributes rattr) throws Exception {
-	 ErrorCode errorCode = memberService.update(member); 
-	 rattr.addAttribute("mid", member.getMid()); //url에 포함 System.out.println(member.getMid()); 
-	 return "redirect:/member/memberdetail"; 
+	 public String membermodify(Member member,RedirectAttributes rattr, HttpSession session) throws Exception {
+		 String curMcode = (String) session.getAttribute("mcode");
+		 if(curMcode.equals("0")) {
+			 ErrorCode errorCode = memberService.mupdate(member);
+			 rattr.addAttribute("mid", member.getMid()); //url에 포함 System.out.println(member.getMid()); 
+			 return "redirect:/member/memberdetail";
+		 }else {
+			 ErrorCode errorCode = memberService.update(member); 
+			 rattr.addAttribute("mid", member.getMid()); //url에 포함 System.out.println(member.getMid()); 
+			 return "redirect:/member/memberdetail"; 
+		 }
 	 }
 	 
 
 
 	  @GetMapping("newpasswd")
-	  public String newpasswd(String mid, Model model) {
-		  Member member = memberService.selectOne(mid);
-		  model.addAttribute("member", member);
-		  return "/member/newpasswd";
+	  public String newpasswd(Member member, String mid, Model model, HttpSession session, RedirectAttributes rattr) {
+		  member = memberService.selectOne(mid);
+		  String memberMid = member.getMid();
+  		  String curMid = (String) session.getAttribute("Mid");
+		  if (memberMid.equals(curMid)) {
+			  member = memberService.selectOne(mid);
+			  model.addAttribute("member", member);
+			  return "/member/newpasswd";
+		  }else {
+			  return "redirect:/";
+		  }
 	  }
 	  
 
@@ -133,7 +156,7 @@ public class MemberController {
 		  ErrorCode errorCode = memberService.delete(mid, session);
 		  if (errorCode.getCode() != 0) { //실패시
 			  model.addAttribute("msg", errorCode.getMsg());
-			  return "/";
+			  return "/member/memberlist";
 		  }else { //성공시 info
 			  return "/member/memberlist";
 		  }
