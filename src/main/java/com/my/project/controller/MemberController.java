@@ -126,7 +126,7 @@ public class MemberController {
 	  public String newpasswd(Member member, String mid, Model model, HttpSession session, RedirectAttributes rattr) {
 		  member = memberService.selectOne(mid);
 		  String memberMid = member.getMid();
-  		  String curMid = (String) session.getAttribute("Mid");
+  		  String curMid = (String) session.getAttribute("mid");
 		  if (memberMid.equals(curMid)) {
 			  member = memberService.selectOne(mid);
 			  model.addAttribute("member", member);
