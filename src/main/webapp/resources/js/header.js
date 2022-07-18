@@ -1,8 +1,3 @@
-/**
- * 헤더
- */
- 
- //document가 준비되었을때 
 $(function(){
 	const sessionName = $('#sessionName').text().trim();
 	const sessionMcode = $('#sessionMcode').val();

@@ -31,8 +31,7 @@ public class BoardServiceImpl implements BoardService {
 		int perPage = b_page.getPerPage(); //한페이지당 게시물수
 		int perBlock = b_page.getPerBlock(); //페이지 블럭의 수
 		
-		//1)게시물의 시작번호(mysql은 시작번호 0번 부터)
-		//오라클은 + 1
+		//1)게시물의 시작번호
 		int startNum = (curPage-1) * perPage;
 		//2)게시물의 끝번호
 		int endNum = startNum + perPage - 1;
@@ -40,7 +39,7 @@ public class BoardServiceImpl implements BoardService {
 		//3)전체페이지수
 		int totalCnt = boardRepository.selectTotalCnt(b_page); //전체게시물수
 		int totPage = totalCnt/perPage;
-		if (totalCnt%perPage!=0) totPage++; //나머지가 있으면 +1
+		if (totalCnt%perPage!=0) totPage++;
 		
 		//4)페이지블럭의 시작페이지
 		int startPage= curPage - ((curPage-1)%perBlock);
